@@ -28,5 +28,5 @@ document.getElementById("signup-btn").addEventListener("click", (e) => {
     username: username.value,
     email: emailSignup.value,
     password: passwordSignup.value,
-  });
+});
 });

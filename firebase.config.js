@@ -106,4 +106,4 @@ function onAuthstate() {
   }
 });
 }
-export { signup, login, onAuthstat,adduserdetails };
+export { signup, login, adduserdetails };
