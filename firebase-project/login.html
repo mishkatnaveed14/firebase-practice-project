@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - TechPortal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">TechPortal</div>
+    <div id="nav-links" class="nav-links"></div>
+  </nav>
+
+  <main class="container">
+    <div class="auth-card">
+      <h2 id="formTitle">Login</h2>
+      <input type="email" id="email" placeholder="Email Address" required>
+      <input type="password" id="password" placeholder="Password" required>
+      
+      <button id="authBtn">Login</button>
+      <p class="toggle-text">
+        Account nahi hai? <a href="#" id="toggleAuth">Signup karein</a>
+      </p>
+      <p id="errorMsg" class="error"></p>
+    </div>
+  </main>
+
+  <script type="module">
+    import { auth, db, signInWithEmailAndPassword, createUserWithEmailAndPassword, doc, setDoc } from './firebase-config.js';
+
+    let isLogin = true;
+    const formTitle = document.getElementById("formTitle");
+    const authBtn = document.getElementById("authBtn");
+    const toggleAuth = document.getElementById("toggleAuth");
+    const errorMsg = document.getElementById("errorMsg");
+
+    toggleAuth.addEventListener("click", (e) => {
+      e.preventDefault();
+      isLogin = !isLogin;
+      formTitle.innerText = isLogin ? "Login" : "Sign Up";
+      authBtn.innerText = isLogin ? "Login" : "Sign Up";
+      toggleAuth.innerText = isLogin ? "Signup karein" : "Login karein";
+    });
+
+    authBtn.addEventListener("click", async () => {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      errorMsg.innerText = "";
+
+      try {
+        if (isLogin) {
+          await signInWithEmailAndPassword(auth, email, password);
+        } else {
+          const userCred = await createUserWithEmailAndPassword(auth, email, password);
+          // Save role in Firestore
+          await setDoc(doc(db, "users", userCred.user.uid), {
+            email: email,
+            role: "user" // Default role
+          });
+        }
+      } catch (err) {
+        errorMsg.innerText = err.message;
+      }
+    });
+  </script>
+  <script type="module" src="auth.js"></script>
+</body>
+</html>
