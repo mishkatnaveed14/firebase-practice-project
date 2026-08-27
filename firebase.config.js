@@ -57,7 +57,14 @@ const db = getFirestore(app);
 // database user CRUD (Create function )
 async function adduserdetails (userdetails){
 // Add a new document in collection "cities"
-await setDoc(doc(db, "users", "123"), userdetails);
+try {
+  await setDoc(doc(db, "users", "123"), userdetails);
+console.log("==>> userdetails stored successfully");
+} catch (error) {
+  console.log(error, "==>> error while storing userdetails")  ;
+  
+}
+
 }
 
 
