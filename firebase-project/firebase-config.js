@@ -1,16 +1,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { 
-  getAuth, 
-  signInWithEmailAndPassword, 
-  createUserWithEmailAndPassword, 
-  signOut,
-  onAuthStateChanged 
+  getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged 
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { 
-  getFirestore, 
-  doc, 
-  setDoc, 
-  getDoc 
+  getFirestore, collection, doc, setDoc, getDoc, getDocs, addDoc, deleteDoc, updateDoc 
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -23,16 +16,15 @@ const firebaseConfig = {
   measurementId: "G-TLWBB28TQ0",
 };
 
-
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+
 export { 
-  signInWithEmailAndPassword, 
-  createUserWithEmailAndPassword, 
-  signOut, 
-  onAuthStateChanged,
-  doc,
-  setDoc,
-  getDoc
+  signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged,
+  collection, doc, setDoc, getDoc, getDocs, addDoc, deleteDoc, updateDoc 
 };
+
+
+
+

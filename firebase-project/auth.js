@@ -1,55 +1,47 @@
 import { auth, db, onAuthStateChanged, signOut, doc, getDoc } from './firebase-config.js';
 
-// Get Current Page Name
 const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
-// Dynamic Navigation & Route Protection
 onAuthStateChanged(auth, async (user) => {
-  const navContainer = document.getElementById("nav-links");
+  const navLinks = document.getElementById("navLinks");
 
   if (user) {
-    // User is Logged In -> Fetch User Data & Role from Firestore
-    const userDoc = await getDoc(doc(db, "users", user.uid));
-    const userData = userDoc.exists() ? userDoc.data() : { role: "user" };
+    const userSnap = await getDoc(doc(db, "users", user.uid));
+    const userData = userSnap.exists() ? userSnap.data() : { role: "user", name: user.email };
 
-    // Redirect away from Login page if already logged in
     if (currentPage === "login.html") {
       window.location.href = userData.role === "admin" ? "admin.html" : "dashboard.html";
       return;
     }
 
-    // Access Control for Admin Page
     if (currentPage === "admin.html" && userData.role !== "admin") {
-      alert("Access Denied: Admins Only!");
+      alert("Access Denied: Admin Rights Required!");
       window.location.href = "dashboard.html";
       return;
     }
 
-    // Render Navbar for Logged In User
-    if (navContainer) {
-      navContainer.innerHTML = `
-        <a href="index.html" class="${currentPage === 'index.html' ? 'active' : ''}">Home</a>
+    if (navLinks) {
+      navLinks.innerHTML = `
+        <a href="index.html" class="${currentPage === 'index.html' ? 'active' : ''}">Store</a>
         <a href="dashboard.html" class="${currentPage === 'dashboard.html' ? 'active' : ''}">Dashboard</a>
-        <a href="profile.html" class="${currentPage === 'profile.html' ? 'active' : ''}">Profile</a>
-        ${userData.role === 'admin' ? `<a href="admin.html" class="${currentPage === 'admin.html' ? 'active' : ''} admin-link">Admin Panel</a>` : ''}
-        <button id="logoutBtn" class="nav-btn">Logout</button>
+        ${userData.role === 'admin' ? `<a href="admin.html" class="${currentPage === 'admin.html' ? 'active' : ''}" style="color:var(--accent-red); font-weight:bold;">Admin Panel</a>` : ''}
+        <button id="logoutBtn" class="btn btn-outline" style="padding:0.4rem 0.8rem;">Logout (${userData.name || 'User'})</button>
+        <button onclick="toggleCart()" class="btn">Cart (<span id="cartCount">0</span>)</button>
       `;
-      document.getElementById("logoutBtn").addEventListener("click", () => signOut(auth));
+      document.getElementById("logoutBtn")?.addEventListener("click", () => signOut(auth));
     }
-
   } else {
-    // User is Logged Out -> Protect Restricted Pages
-    const protectedPages = ["dashboard.html", "profile.html", "admin.html"];
+    const protectedPages = ["dashboard.html", "admin.html"];
     if (protectedPages.includes(currentPage)) {
       window.location.href = "login.html";
       return;
     }
 
-    // Render Navbar for Guest User
-    if (navContainer) {
-      navContainer.innerHTML = `
-        <a href="index.html" class="${currentPage === 'index.html' ? 'active' : ''}">Home</a>
-        <a href="login.html" class="nav-btn">Login / Signup</a>
+    if (navLinks) {
+      navLinks.innerHTML = `
+        <a href="index.html" class="${currentPage === 'index.html' ? 'active' : ''}">Store</a>
+        <a href="login.html" class="btn">Login / Register</a>
+        <button onclick="toggleCart()" class="btn btn-outline">Cart (<span id="cartCount">0</span>)</button>
       `;
     }
   }
