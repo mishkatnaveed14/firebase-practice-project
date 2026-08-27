@@ -2,68 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - TechPortal</title>
+  <title>Auth Portal - AuraTech</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <nav class="navbar">
-    <div class="logo">TechPortal</div>
-    <div id="nav-links" class="nav-links"></div>
+    <a href="index.html" class="logo">AuraTech</a>
+    <div id="navLinks" class="nav-links"></div>
   </nav>
 
-  <main class="container">
-    <div class="auth-card">
-      <h2 id="formTitle">Login</h2>
-      <input type="email" id="email" placeholder="Email Address" required>
-      <input type="password" id="password" placeholder="Password" required>
+  <main class="main-content">
+    <div class="card" style="max-width: 420px; margin: 3rem auto;">
+      <h2 id="formTitle" style="margin-bottom: 1.5rem;">Login</h2>
       
-      <button id="authBtn">Login</button>
-      <p class="toggle-text">
-        Account nahi hai? <a href="#" id="toggleAuth">Signup karein</a>
+      <div style="margin-bottom: 1rem;" id="nameGroup" hidden>
+        <input type="text" id="authName" placeholder="Full Name">
+      </div>
+      <div style="margin-bottom: 1rem;">
+        <input type="email" id="authEmail" placeholder="Email Address" required>
+      </div>
+      <div style="margin-bottom: 1rem;">
+        <input type="password" id="authPassword" placeholder="Password" required>
+      </div>
+      <div style="margin-bottom: 1rem;" id="roleGroup" hidden>
+        <select id="authRole">
+          <option value="user">Customer Account</option>
+          <option value="admin">Administrator Account</option>
+        </select>
+      </div>
+
+      <button id="submitAuth" class="btn" style="width: 100%;">Sign In</button>
+      
+      <p style="margin-top: 1rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+        <span id="toggleText">Need an account?</span> 
+        <a href="#" id="toggleAuth" style="color: var(--accent-blue);">Register</a>
       </p>
-      <p id="errorMsg" class="error"></p>
+
+      <p id="errorMsg" style="color:var(--accent-red); margin-top:0.5rem; font-size:0.85rem;"></p>
     </div>
   </main>
 
+  <script type="module" src="auth.js"></script>
   <script type="module">
     import { auth, db, signInWithEmailAndPassword, createUserWithEmailAndPassword, doc, setDoc } from './firebase-config.js';
 
-    let isLogin = true;
-    const formTitle = document.getElementById("formTitle");
-    const authBtn = document.getElementById("authBtn");
+    let isRegister = false;
     const toggleAuth = document.getElementById("toggleAuth");
-    const errorMsg = document.getElementById("errorMsg");
+    const nameGroup = document.getElementById("nameGroup");
+    const roleGroup = document.getElementById("roleGroup");
+    const formTitle = document.getElementById("formTitle");
+    const submitAuth = document.getElementById("submitAuth");
 
     toggleAuth.addEventListener("click", (e) => {
       e.preventDefault();
-      isLogin = !isLogin;
-      formTitle.innerText = isLogin ? "Login" : "Sign Up";
-      authBtn.innerText = isLogin ? "Login" : "Sign Up";
-      toggleAuth.innerText = isLogin ? "Signup karein" : "Login karein";
+      isRegister = !isRegister;
+      formTitle.innerText = isRegister ? "Create Account" : "Login";
+      submitAuth.innerText = isRegister ? "Sign Up" : "Sign In";
+      nameGroup.hidden = !isRegister;
+      roleGroup.hidden = !isRegister;
     });
 
-    authBtn.addEventListener("click", async () => {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      errorMsg.innerText = "";
+    submitAuth.addEventListener("click", async () => {
+      const email = document.getElementById("authEmail").value;
+      const password = document.getElementById("authPassword").value;
+      const name = document.getElementById("authName").value;
+      const role = document.getElementById("authRole").value;
+      const errorMsg = document.getElementById("errorMsg");
 
       try {
-        if (isLogin) {
-          await signInWithEmailAndPassword(auth, email, password);
+        if (isRegister) {
+          const res = await createUserWithEmailAndPassword(auth, email, password);
+          await setDoc(doc(db, "users", res.user.uid), { name, email, role });
         } else {
-          const userCred = await createUserWithEmailAndPassword(auth, email, password);
-          // Save role in Firestore
-          await setDoc(doc(db, "users", userCred.user.uid), {
-            email: email,
-            role: "user" // Default role
-          });
+          await signInWithEmailAndPassword(auth, email, password);
         }
       } catch (err) {
         errorMsg.innerText = err.message;
       }
     });
   </script>
-  <script type="module" src="auth.js"></script>
 </body>
 </html>
