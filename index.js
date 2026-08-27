@@ -1,4 +1,4 @@
-import { signup, login,adduserdetails } from "./firebase.config.js";
+import { signup, login, adduserdetails } from "./firebase.config.js";
 
 // =========================
 // SIGN IN
@@ -25,8 +25,8 @@ document.getElementById("signup-btn").addEventListener("click", (e) => {
 
   signup(emailSignup.value, passwordSignup.value);
   adduserdetails({
-    username : username.value
-email = email.value
-  })
+    username: username.value,
+    email: email.value,
+    password: password.value,
+  });
 });
-
