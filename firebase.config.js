@@ -59,13 +59,12 @@ async function adduserdetails (userdetails){
 // Add a new document in collection "cities"
 try {
   await setDoc(doc(db, "users", "123"), userdetails);
-  
+
 console.log("==>> userdetails stored successfully");
 } catch (error) {
   console.log(error, "==>> error while storing userdetails")  ;
   
 }
-
 }
 
 

@@ -26,7 +26,7 @@ document.getElementById("signup-btn").addEventListener("click", (e) => {
   signup(emailSignup.value, passwordSignup.value);
   adduserdetails({
     username: username.value,
-    email: email.value,
-    password: password.value,
+    email: emailSignup.value,
+    password: passwordSignup.value,
   });
 });
