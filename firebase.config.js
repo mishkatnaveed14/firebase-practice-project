@@ -99,4 +99,4 @@ function onAuthstate() {
   }
 });
 }
-export { signup, login, onAuthstate };
+export { signup, login, onAuthstat,adduserdetails };
