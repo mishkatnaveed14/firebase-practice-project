@@ -6,7 +6,10 @@ import {
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 // database
-import { getFirestore } from  "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+import { getFirestore,
+  doc, 
+  setDoc
+ } from  "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 // change for all different projects
 const firebaseConfig = {
@@ -26,7 +29,7 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 // SIGN UP
-function signup(email, password) {
+ function signup(email, password) {
 
   createUserWithEmailAndPassword(auth, email, password)
 
@@ -51,8 +54,11 @@ function signup(email, password) {
 
     });
 }
-
-function add
+// database user CRUD (Create function )
+async function adduserdetails (userdetails){
+// Add a new document in collection "cities"
+await setDoc(doc(db, "users", "123"), userdetails);
+}
 
 
 // LOGIN
