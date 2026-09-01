@@ -29,12 +29,15 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 // SIGN UP
-function signup(email, password) {
-  createUserWithEmailAndPassword(auth, email, password)
+ async function signup(email, password,username) {
+  createUserWithEmailAndPassword(auth, email, password,username)
     .then((userCredential) => {
       const user = userCredential.user;
 
       console.log(user.email, "===> successfully signed up");
+
+       await setDoc(doc(db, "users", uesr.id), { userdetail });
+    console.log("=====>> user set up succcessfully ");
     })
 
     .catch((error) => {
@@ -60,7 +63,7 @@ function login(email, password) {
 // crud ka creste user details
 async function adduserdetails(userdetail) {
   try {
-    await setDoc(doc(db, "users", "1234"), { userdetail });
+    await setDoc(doc(db, "users", uesr.id), { userdetail });
     console.log("=====>> user set up succcessfully ");
   } catch (error) {
     console.log(error, "srror insignup database");
