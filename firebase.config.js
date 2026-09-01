@@ -9,6 +9,7 @@ import {
   getFirestore,
   doc,
   setDoc,
+   getDoc
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 // change for all different projects
@@ -98,5 +99,19 @@ function login(email, password) {
 
 // ===========>>>>>>>>>> firestore database <<<<<<<<<<<<====================
 // crud ka creste user details
+// crud ka get data matlab read data 
 
-export { signup, login };
+async function getsingleuserdata(uniqueid){
+
+const docRef = doc(db, "users", uniqueid);
+const docSnap = await getDoc(docRef);
+
+if (docSnap.exists()) {
+  console.log("Document data:", docSnap.data());
+} else {
+  // docSnap.data() will be undefined in this case
+  console.log("No such document!");
+}
+}
+
+export { signup, login, getsingleuserdata };

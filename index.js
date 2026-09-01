@@ -1,4 +1,4 @@
-import { signup, login,  } from "./firebase.config.js";
+import { signup, login, getsingleuserdata,  } from "./firebase.config.js";
 
 // =========================
 // SIGN IN
@@ -27,6 +27,13 @@ document.getElementById("signup-btn").addEventListener("click", (e) => {
       emailSignup.value, passwordSignup.value, username.value );
    
 });
+
+
+// get data 
+const btn = document.getElementById("getsingledata")
+btn.addEventListener("click",()=> {
+  getsingleuserdata("zmAyhs3pPeXYxvyfqsAYC8kC2Dw2")
+} )
 
 // document.getElementById("signin-btn").addEventListener("click", (e) => {
 //   e.preventDefault();
