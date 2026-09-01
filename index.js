@@ -20,12 +20,15 @@ document.getElementById("signin-btn").addEventListener("click", (e) => {
 const emailSignup = document.getElementById("signup-email");
 const passwordSignup = document.getElementById("signup-password");
 const username = document.getElementById("signup-name");
+
 document.getElementById("signup-btn").addEventListener("click", (e) => {
   e.preventDefault();
   const now = Date.now()
   console.log(now,"===>> now" );
   
   signup(emailSignup.value, passwordSignup.value, username.value);
+  console.log(emailSignup.value, passwordSignup.value, username.value);
+  
   adduserdetails({
     username: username.value,
     email: emailSignup.value,
