@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
+    <title>Sign Up</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -15,40 +14,89 @@
 
         <!-- Header -->
         <div class="modal-header">
-            <h2 id="modalTitle">Welcome Back</h2>
+
+            <h2 id="modalTitle">
+                Create Account
+            </h2>
+
             <p id="modalSubtitle">
-                Please enter your details to continue
+                Join us to get started with your account
             </p>
+
         </div>
+
 
         <!-- Social Login -->
+
         <div class="social-buttons">
 
-            <button class="btn-social" type="button" aria-label="Google">
-                <!-- tumhara existing Google SVG yahan -->
+            <button
+                class="btn-social"
+                type="button"
+                aria-label="Google">
+
+                <!-- existing Google SVG -->
+
             </button>
 
-            <button class="btn-social" type="button" aria-label="GitHub">
-                <!-- tumhara existing GitHub SVG yahan -->
+
+            <button
+                class="btn-social"
+                type="button"
+                aria-label="GitHub">
+
+                <!-- existing GitHub SVG -->
+
             </button>
 
-            <button class="btn-social" type="button" aria-label="Facebook">
-                <!-- tumhara existing Facebook SVG yahan -->
+
+            <button
+                class="btn-social"
+                type="button"
+                aria-label="Facebook">
+
+                <!-- existing Facebook SVG -->
+
             </button>
 
         </div>
+
 
         <div class="divider">
             <span>or continue with email</span>
         </div>
 
 
-        <!-- SIGN IN FORM -->
-        <form class="form-content active" id="formSignin">
+        <!-- SIGN UP FORM -->
+
+        <form
+            class="form-content active"
+            id="formSignup">
+
 
             <div class="form-group">
 
-                <label for="signin-email">
+                <label for="signup-name">
+                    Full Name
+                </label>
+
+                <div class="input-wrapper">
+
+                    <input
+                        type="text"
+                        id="signup-name"
+                        placeholder="John Doe"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="signup-email">
                     Email Address
                 </label>
 
@@ -56,7 +104,7 @@
 
                     <input
                         type="email"
-                        id="signin-email"
+                        id="signup-email"
                         placeholder="name@company.com"
                         required
                     >
@@ -68,7 +116,7 @@
 
             <div class="form-group">
 
-                <label for="signin-password">
+                <label for="signup-password">
                     Password
                 </label>
 
@@ -76,7 +124,7 @@
 
                     <input
                         type="password"
-                        id="signin-password"
+                        id="signup-password"
                         class="password-input"
                         placeholder="••••••••"
                         required
@@ -85,7 +133,9 @@
                     <button
                         type="button"
                         class="toggle-password">
+
                         👁️
+
                     </button>
 
                 </div>
@@ -93,42 +143,24 @@
             </div>
 
 
-            <div class="form-options">
-
-                <label class="remember-me">
-
-                    <input type="checkbox">
-
-                    Remember me
-
-                </label>
-
-
-                <a href="#" class="forgot-link">
-                    Forgot password?
-                </a>
-
-            </div>
-
-
             <button
                 type="submit"
                 class="btn-submit"
-                id="signin-btn">
+                id="signup-btn">
 
-                Sign In
+                Create Account
 
             </button>
 
         </form>
 
 
-        <!-- SIGN UP PAGE LINK -->
+        <!-- LOGIN PAGE LINK -->
 
         <p>
-            Don't have an account?
-            <a href="signup.html">
-                Sign Up
+            Already have an account?
+            <a href="login.html">
+                Sign In
             </a>
         </p>
 

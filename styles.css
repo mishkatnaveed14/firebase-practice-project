@@ -1,320 +1,461 @@
- /* Reset & CSS Variables */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.18), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.18), transparent 30%),
+        #080b14;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+    color: #fff;
+}
+
+
+/* =========================
+   AUTH CARD
+========================= */
+
+.auth-modal {
+    width: 100%;
+    max-width: 440px;
+
+    padding: 42px;
+
+    background: rgba(17, 21, 35, 0.88);
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.55),
+        0 0 60px rgba(99, 102, 241, 0.08);
+
+    backdrop-filter: blur(18px);
+
+    animation: cardShow 0.5s ease;
+}
+
+
+@keyframes cardShow {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
     }
 
-    :root {
-      --primary: #6366f1;
-      --primary-hover: #4f46e5;
-      --bg-dark: #0f172a;
-      --card-bg: rgba(30, 41, 59, 0.85);
-      --input-bg: #0f172a;
-      --border-color: #334155;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.modal-header h2 {
+    font-size: 30px;
+    font-weight: 800;
+
+    letter-spacing: -0.8px;
+
+    margin-bottom: 9px;
+
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #a5b4fc
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.modal-header p {
+    color: #8e96aa;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   SOCIAL BUTTONS
+========================= */
+
+.social-buttons {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-bottom: 24px;
+}
+
+.btn-social {
+    height: 48px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    background: rgba(255, 255, 255, 0.045);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.btn-social svg {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-social:hover {
+    background: rgba(255, 255, 255, 0.09);
+
+    border-color: rgba(255, 255, 255, 0.18);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   DIVIDER
+========================= */
+
+.divider {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 25px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: rgba(255, 255, 255, 0.09);
+}
+
+.divider span {
+    color: #727b91;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-content {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #d7dbea;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper input {
+    width: 100%;
+
+    height: 50px;
+
+    padding: 0 15px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.045);
+
+    color: #fff;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    transition: 0.25s ease;
+}
+
+.input-wrapper input::placeholder {
+    color: #626b80;
+}
+
+.input-wrapper input:focus {
+    border-color: #6366f1;
+
+    background: rgba(99, 102, 241, 0.06);
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+
+/* =========================
+   PASSWORD TOGGLE
+========================= */
+
+.toggle-password {
+    position: absolute;
+
+    right: 12px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 17px;
+
+    opacity: 0.7;
+
+    transition: 0.2s;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+}
+
+
+/* =========================
+   FORM OPTIONS
+========================= */
+
+.form-options {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-top: -5px;
+}
+
+.remember-me {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #8e96aa;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.remember-me input {
+    accent-color: #6366f1;
+
+    cursor: pointer;
+}
+
+.forgot-link {
+    color: #818cf8;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.forgot-link:hover {
+    color: #a5b4fc;
+}
+
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.btn-submit {
+    width: 100%;
+
+    height: 50px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+    );
+
+    color: #fff;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(99, 102, 241, 0.25);
+
+    transition: 0.25s ease;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 30px rgba(99, 102, 241, 0.35);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+
+/* =========================
+   PAGE SWITCH LINK
+========================= */
+
+.auth-modal > p {
+    text-align: center;
+
+    margin-top: 25px;
+
+    color: #747d92;
+
+    font-size: 13px;
+}
+
+.auth-modal > p a {
+    color: #818cf8;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    margin-left: 4px;
+
+    transition: 0.2s;
+}
+
+.auth-modal > p a:hover {
+    color: #a5b4fc;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 500px) {
 
     body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at top left, #1e1b4b, var(--bg-dark));
-      padding: 1.5rem;
+        padding: 18px;
     }
 
-    /* Open Modal Trigger Button */
-    .open-modal-btn {
-      padding: 0.8rem 1.8rem;
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
-      transition: all 0.2s ease;
-    }
-
-    .open-modal-btn:hover {
-      background: var(--primary-hover);
-      transform: translateY(-2px);
-    }
-
-    /* Modal Backdrop / Overlay */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      z-index: 1000;
-      padding: 1rem;
-    }
-
-    .modal-overlay.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    /* Auth Modal Container */
     .auth-modal {
-      position: relative;
-      width: 100%;
-      max-width: 440px;
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 2.5rem 2rem;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
-      transform: scale(0.95);
-      transition: transform 0.3s ease;
-    }
+        padding: 30px 22px;
 
-    .modal-overlay.active .auth-modal {
-      transform: scale(1);
-    }
-
-    /* Close Button */
-    .close-btn {
-      position: absolute;
-      top: 1.25rem;
-      right: 1.25rem;
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      font-size: 1.2rem;
-      padding: 0.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      transition: color 0.2s ease;
-    }
-
-    .close-btn:hover {
-      color: var(--text-main);
-    }
-
-    /* Tabs UI */
-    .tab-header {
-      display: flex;
-      background: var(--input-bg);
-      padding: 4px;
-      border-radius: 12px;
-      margin-bottom: 1.8rem;
-      border: 1px solid var(--border-color);
-    }
-
-    .tab-btn {
-      flex: 1;
-      text-align: center;
-      padding: 0.6rem 1rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      border-radius: 8px;
-      cursor: pointer;
-      background: transparent;
-      border: none;
-      transition: all 0.2s ease;
-    }
-
-    .tab-btn.active {
-      background: var(--primary);
-      color: #ffffff;
-      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-    }
-
-    /* Header Text */
-    .modal-header {
-      text-align: center;
-      margin-bottom: 1.8rem;
+        border-radius: 20px;
     }
 
     .modal-header h2 {
-      color: var(--text-main);
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
+        font-size: 26px;
     }
 
-    .modal-header p {
-      color: var(--text-muted);
-      font-size: 0.875rem;
-    }
-
-    /* Social Buttons */
     .social-buttons {
-      display: flex;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
+        gap: 8px;
     }
 
-    .btn-social {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.65rem;
-      background: var(--input-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.2s ease;
+}
+
+
+@media (max-width: 360px) {
+
+    .auth-modal {
+        padding: 25px 18px;
     }
 
-    .btn-social:hover {
-      background: #1e293b;
-      border-color: #475569;
-      transform: translateY(-2px);
+    .modal-header h2 {
+        font-size: 23px;
     }
 
-    .btn-social svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    /* Divider */
-    .divider {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      color: var(--text-muted);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .divider::before,
-    .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border-color);
-    }
-
-    .divider span {
-      padding: 0 0.75rem;
-    }
-
-    /* Input Fields */
-    .form-group {
-      margin-bottom: 1.2rem;
-    }
-
-    .form-group label {
-      display: block;
-      color: var(--text-main);
-      font-size: 0.85rem;
-      font-weight: 500;
-      margin-bottom: 0.4rem;
-    }
-
-    .input-wrapper {
-      position: relative;
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      padding-right: 2.5rem;
-      background: var(--input-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      color: var(--text-main);
-      font-size: 0.9rem;
-      outline: none;
-      transition: border-color 0.2s ease;
-    }
-
-    .form-group input:focus {
-      border-color: var(--primary);
-    }
-
-    .toggle-password {
-      position: absolute;
-      right: 0.8rem;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      font-size: 0.85rem;
-    }
-
-    /* Forms Visibility Switching */
-    .form-content {
-      display: none;
-    }
-
-    .form-content.active {
-      display: block;
-    }
-
-    /* Form Options */
-    .form-options {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      font-size: 0.825rem;
-    }
-
-    .remember-me {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-muted);
-      cursor: pointer;
-    }
-
-    .remember-me input {
-      accent-color: var(--primary);
-    }
-
-    .forgot-link {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .forgot-link:hover {
-      text-decoration: underline;
-    }
-
-    /* Submit Button */
-    .btn-submit {
-      width: 100%;
-      padding: 0.8rem;
-      background: var(--primary);
-      color: #ffffff;
-      border: none;
-      border-radius: 10px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.1s ease;
-    }
-
-    .btn-submit:hover {
-      background: var(--primary-hover);
-    }
-
-    .btn-submit:active {
-      transform: scale(0.99);
-    }
+}
