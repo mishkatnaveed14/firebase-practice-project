@@ -93,4 +93,4 @@ async function userdetails(userdetail) {
 }
 
 
-export { signup, login, adduserdetails };
+export { signup, login, userdetails };
