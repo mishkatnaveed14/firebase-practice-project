@@ -82,11 +82,12 @@ function login(email, password) {
 function togetloggedinuser() {
   onAuthStateChanged(auth, (user) => {
     console.log(user, "user kya user mila");
-
-    if (user) {
+let e;
+    if ((user)) {
       const uid = user.uid;
+      e.preventDefault();
       window.location = "./home.html";
-      console.log(uid, "jo user login hauski user id ye ha");
+      console.log(uid, "jo user login ha uski user id ye ha");
 
       // ...
     } else {
