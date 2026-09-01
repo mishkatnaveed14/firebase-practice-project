@@ -1,4 +1,9 @@
-import { signup, login, getsingleuserdata, getalldata,  } from "./firebase.config.js";
+import {
+  signup,
+  login,
+  getsingleuserdata,
+  getalldata,
+} from "./firebase.config.js";
 
 // =========================
 // SIGN IN
@@ -23,23 +28,20 @@ const username = document.getElementById("signup-name");
 
 document.getElementById("signup-btn").addEventListener("click", (e) => {
   e.preventDefault();
-   signup(
-      emailSignup.value, passwordSignup.value, username.value );
-   
+  signup(emailSignup.value, passwordSignup.value, username.value);
 });
 
-
 // get data (read data crud )
-const btn = document.getElementById("getsingledata")
-btn.addEventListener("click",()=> {
-  getsingleuserdata("zmAyhs3pPeXYxvyfqsAYC8kC2Dw2")
-} )
+const btn = document.getElementById("getsingledata");
+btn.addEventListener("click", () => {
+  getsingleuserdata("zmAyhs3pPeXYxvyfqsAYC8kC2Dw2");
+});
 // get all data (read data crud)
-const btn2 = document.getElementById("getalldata")
-btn2.addEventListener("click",()=> {
-  getalldata()
-} )
-// 
+const btn2 = document.getElementById("getalldata");
+btn2.addEventListener("click", () => {
+  getalldata();
+});
+//
 // document.getElementById("signin-btn").addEventListener("click", (e) => {
 //   e.preventDefault();
 //   alert("Sign In button clicked! and succecfully sign in");
