@@ -1,4 +1,6 @@
-import { getalldata } from "../firebase.config.js";
+import { getalldata,
+   logout
+ } from "../firebase.config.js";
 const tableBody = document.getElementById("users-table-body");
 const totalUsers = document.getElementById("total-users");
 const refreshBtn = document.getElementById("refresh-btn");
@@ -32,5 +34,8 @@ async function showUsers() {
 
 showUsers();
 
-
+document.getElementById("logout-btn").addEventListener("click",(e)=>{
+    e.preventDefault()
+    logout()
+})
 refreshBtn.addEventListener("click", showUsers);
