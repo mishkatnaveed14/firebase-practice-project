@@ -49,6 +49,7 @@ async function signup(email, password, username) {
       })
         .then(() => {
           console.log("data store in data base");
+          window.location.href = "/html/home.html";
         })
 
         .catch((error) => {
@@ -72,6 +73,7 @@ function login(email, password) {
       const user = userCredential.user;
 
       console.log(user.email, "===> login successfully");
+      window.location.href = "/html/home.html";
     })
 
     .catch((error) => {
@@ -102,65 +104,110 @@ function togetloggedinuser() {
       //     } else {
       //       window.location.path = "/login.html";
       //     }
+      // if(window.location.pathname == "index"){
+
+      // }
       if (
-        window.location.pathname == "/login.html" ||
-        window.location.pathname == "/signup.html"
+        window.location.pathname === "/html/login.html" ||
+        window.location.pathname === "/html/signup.html"
       ) {
-        window.location = "./home.html";
-        log("I am already in login or signup page ");
-      } else if (window.location.pathname == "/home.html") {
+        window.location.href = "/html/home.html";
+      }
+      else if (
+        window.location.pathname === "/html/home.html"
+      ) {
         console.log("I am already in home page");
-      } else if (window.location.pathname == "/index.html") {
-        window.location = "/home.html";
-      } else {
-        window.location = "/home.html";
+      }
+      else if (
+        window.location.pathname === "/html/admin.html"
+      ) {
+        console.log("I am already in admin page");
+      }
+      else if (
+        window.location.pathname === "./index.html" ||
+        window.location.pathname === "/"
+      ) {
+        // Agar logged-in user index par aaye
+        // to home par bhej do
+        window.location.href = "/html/home.html";
+      }
+    }
+    else {
+      // =========================
+      // USER NOT LOGGED IN
+      // =========================
+      if (
+        window.location.pathname === "/index.html" ||
+        window.location.pathname === "/"
+      ) {
+        // IMPORTANT:
+        // Index page par hi rehne do
+        console.log("I am on index page");
+      }
+      else if (
+        window.location.pathname === "/html/login.html"
+      ) {
+        console.log("I am already on login page");
+      }
+      else if (
+        window.location.pathname === "/html/signup.html"
+      ) {
+        console.log("I am already on signup page");
+      }
+      else if (
+        window.location.pathname === "/html/home.html" ||
+        window.location.pathname === "/html/admin.html"
+      ) {
+        // Login nahi hai, protected page par aa gaya
+        // login page par bhejo
+        window.location.href = "/html/login.html";
       }
     }
   });
 }
 
 function logout() {
-  signOut(auth)
-    .then(() => {
-      // Sign-out successful.
-      window.location = "./login.html";
-    })
-    .catch((error) => {
-      // An error happened.
-    });
-}
+      signOut(auth)
+        .then(() => {
+          // Sign-out successful.
+          window.location = "./login.html";
+        })
+        .catch((error) => {
+          // An error happened.
+        });
+    }
 // ===========>>>>>>>>>> firestore database <<<<<<<<<<<<====================
 // crud ka creste user details
 // crud ka get data matlab read data of single user
 async function getsingleuserdata(uniqueid) {
-  const docRef = doc(db, "users", uniqueid);
-  const docSnap = await getDoc(docRef);
+      const docRef = doc(db, "users", uniqueid);
+      const docSnap = await getDoc(docRef);
 
-  if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
-  } else {
-    // docSnap.data() will be undefined in this case
-    console.log("No such document!");
-  }
-}
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+      } else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    }
 // crud ka read data matlab multiple data
 async function getalldata() {
-  const q = query(collection(db, "users"));
+      const q = query(collection(db, "users"));
 
-  const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data());
-  });
-}
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+      });
+    }
 
 //
 
 export {
-  signup,
-  login,
-  getsingleuserdata,
-  getalldata,
-  togetloggedinuser,
-  logout,
-};
+    signup,
+    login,
+    getsingleuserdata,
+    getalldata,
+    togetloggedinuser,
+    logout,
+  };

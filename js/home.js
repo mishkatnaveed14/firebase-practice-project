@@ -8,3 +8,9 @@ button.addEventListener("click",(e)=>{
     logout()
     
 })
+let btb3 = document.getElementById("btnc").addEventListener("click",(e)=>{
+    e.preventDefault()
+      window.location.pathname = "../html/admin.html"
+})
+  
+  
