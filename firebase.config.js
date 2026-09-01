@@ -4,7 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-  signOut
+  signOut,
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 // database
 import {
@@ -84,39 +84,38 @@ function login(email, password) {
 function togetloggedinuser() {
   onAuthStateChanged(auth, (user) => {
     console.log(user, "user kya user mila");
-    let e;
+    // agr user ha tu uski id or agr wo home.tml ma nhn ha tu ussay home.html ma 
     if (user) {
       const uid = user.uid;
-      // e.preventDefault();
-      //  window.location = "./home.html"
       console.log(window.location, "===>> window currnt location");
       if (!window.location.pathname == "/home.html") {
         window.location.pathname == "/home.html";
       }
-
       console.log("jo user login ha uski user id ye ha", uid);
-
-      // ...
     } else {
       console.log("user login nhn ha ");
 
-     if(window.location.pathname == "./index.html"|| window.location.pathname == "./login.html"){
-console.log("I am already in login or signup page ");
-
-     }else{
-      window.location.path = "./login.html"
-     }
+      if (
+        window.location.pathname == "/index.html" ||
+        window.location.pathname == "/login.html"
+      ) {
+        console.log("I am already in login or signup page ");
+      } else {
+        window.location.path = "/login.html";
+      }
     }
   });
 }
 
-function logout (){
-signOut(auth).then(() => {
-  // Sign-out successful.
-  window.location = "./login.html"
-}).catch((error) => {
-  // An error happened.
-});
+function logout() {
+  signOut(auth)
+    .then(() => {
+      // Sign-out successful.
+      window.location = "./login.html";
+    })
+    .catch((error) => {
+      // An error happened.
+    });
 }
 // ===========>>>>>>>>>> firestore database <<<<<<<<<<<<====================
 // crud ka creste user details
@@ -145,4 +144,11 @@ async function getalldata() {
 
 //
 
-export { signup, login, getsingleuserdata, getalldata, togetloggedinuser ,logout};
+export {
+  signup,
+  login,
+  getsingleuserdata,
+  getalldata,
+  togetloggedinuser,
+  logout,
+};
