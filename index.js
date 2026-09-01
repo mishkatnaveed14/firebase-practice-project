@@ -1,4 +1,4 @@
-import { signup, login, userdetails } from "./firebase.config.js";
+import { signup, login, adduserdetails } from "./firebase.config.js";
 
 // =========================
 // SIGN IN
@@ -19,19 +19,18 @@ document.getElementById("signin-btn").addEventListener("click", (e) => {
 
 const emailSignup = document.getElementById("signup-email");
 const passwordSignup = document.getElementById("signup-password");
-const username = document.getElementById("signup-name")
+const username = document.getElementById("signup-name");
 document.getElementById("signup-btn").addEventListener("click", (e) => {
   e.preventDefault();
-
   signup(emailSignup.value, passwordSignup.value);
-  userdetails({
+  adduserdetails({
     username: username.value,
     email: emailSignup.value,
     password: passwordSignup.value,
   });
 });
 
-document.getElementById("signin-btn").addEventListener("click", (e) => {
-  e.preventDefault();
-  alert("Sign In button clicked! and succecfully sign in");
-});
+// document.getElementById("signin-btn").addEventListener("click", (e) => {
+//   e.preventDefault();
+//   alert("Sign In button clicked! and succecfully sign in");
+// });
