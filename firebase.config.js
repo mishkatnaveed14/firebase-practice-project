@@ -91,7 +91,7 @@ function togetloggedinuser() {
       //  window.location = "./home.html"
       console.log(window.location, "===>> window currnt location");
       if (!window.location.pathname == "/home.html") {
-        window.location.pathname == "/home.html";
+        window.location.path == "/home.html";
       }
 
       console.log("jo user login ha uski user id ye ha", uid);
@@ -100,11 +100,11 @@ function togetloggedinuser() {
     } else {
       console.log("user login nhn ha ");
 
-     if(window.location.pathname == "./index.html"|| window.location.pathname == "./login.html"){
+     if(window.location.path == "./index.html"|| window.location.path == "./login.html"){
 console.log("I am already in login or signup page ");
 
      }else{
-      window.location.pathname = "./login.html"
+      window.location.path = "./login.html"
      }
     }
   });
