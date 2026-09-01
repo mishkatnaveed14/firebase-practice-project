@@ -35,9 +35,6 @@ const db = getFirestore(app);
       const user = userCredential.user;
 
       console.log(user.email, "===> successfully signed up");
-
-       await setDoc(doc(db, "users", uesr.id), { userdetail });
-    console.log("=====>> user set up succcessfully ");
     })
 
     .catch((error) => {
@@ -63,7 +60,7 @@ function login(email, password) {
 // crud ka creste user details
 async function adduserdetails(userdetail) {
   try {
-    await setDoc(doc(db, "users", uesr.id), { userdetail });
+    await setDoc(doc(db, "users", "1234"), { userdetail });
     console.log("=====>> user set up succcessfully ");
   } catch (error) {
     console.log(error, "srror insignup database");
