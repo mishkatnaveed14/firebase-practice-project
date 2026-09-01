@@ -100,7 +100,12 @@ function togetloggedinuser() {
     } else {
       console.log("user login nhn ha ");
 
-      window.location = "./login.html";
+     if(window.location.pathname == "./index.html"|| window.location.pathname == "./login.html"){
+console.log("I am already in login or signup page ");
+
+     }else{
+      window.location.pathname = "./login.html"
+     }
     }
   });
 }
