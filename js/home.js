@@ -1,4 +1,4 @@
-import { logout, togetloggedinuser } from "./firebase.config.js";
+import { logout, togetloggedinuser } from "../firebase.config.js";
 togetloggedinuser()
 
 const button = document.getElementById("logout")

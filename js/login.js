@@ -1,5 +1,5 @@
 
-import { login, togetloggedinuser } from "./firebase.config.js";
+import { login, togetloggedinuser } from "../firebase.config.js";
 togetloggedinuser()
 // =========================
 // SIGN IN

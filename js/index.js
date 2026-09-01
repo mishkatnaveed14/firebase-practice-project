@@ -3,7 +3,7 @@ import {
   getsingleuserdata,
   getalldata,
   togetloggedinuser,
-} from "./firebase.config.js";
+} from "../firebase.config.js";
 togetloggedinuser()
 
 
