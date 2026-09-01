@@ -88,10 +88,10 @@ function togetloggedinuser() {
       const uid = user.uid;
       // e.preventDefault();
     //  window.location = "./home.html"
-   console.log(window.location(),"===>> window currnt location");
+   console.log(window.location,"===>> window currnt location");
    
 
-      console.log(uid, "jo user login ha uski user id ye ha");
+      console.log( "jo user login ha uski user id ye ha", uid);
 
       // ...
     } else {
