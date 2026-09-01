@@ -61,7 +61,7 @@ function login(email, password) {
 async function adduserdetails(userdetail,uniqueid) {
   try {
     await setDoc(doc(db, "users", uniqueid), { userdetail });
-    console.log("=====>> user set up and data stored succcessfully ");
+    console.log(uniqueid,"=====>> user set up and data stored succcessfully ");
   } catch (error) {
     console.log(error.code, "error in signup database");
     console.log(error.message, "error insignup database");

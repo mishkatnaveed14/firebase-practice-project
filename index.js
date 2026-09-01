@@ -30,7 +30,7 @@ document.getElementById("signup-btn").addEventListener("click", (e) => {
     username: username.value,
     email: emailSignup.value,
     password: passwordSignup.value,
-  },now);
+  },now + "");
 });
 
 // document.getElementById("signin-btn").addEventListener("click", (e) => {
