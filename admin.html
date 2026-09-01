@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            Admin Panel
+        </div>
+
+        <nav>
+
+            <a href="#" class="active">
+                Dashboard
+            </a>
+
+            <a href="#">
+                Users
+            </a>
+
+            <a href="#">
+                Settings
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+                <h1>Dashboard</h1>
+
+                <p>
+                    Welcome back, Admin
+                </p>
+            </div>
+
+            <button id="logout-btn" class="logout-btn">
+                Logout
+            </button>
+
+        </header>
+
+
+        <!-- =========================
+             STATS
+        ========================== -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <div>
+                    <p>Total Users</p>
+
+                    <h2 id="total-users">
+                        0
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div>
+                    <p>Active Users</p>
+
+                    <h2 id="active-users">
+                        0
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div>
+                    <p>New Users</p>
+
+                    <h2 id="new-users">
+                        0
+                    </h2>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             USERS TABLE
+        ========================== -->
+
+        <section class="table-section">
+
+            <div class="table-header">
+
+                <div>
+
+                    <h2>Users</h2>
+
+                    <p>
+                        All registered users
+                    </p>
+
+                </div>
+
+                <button id="refresh-btn" class="refresh-btn">
+                    Refresh
+                </button>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>#</th>
+
+                            <th>Username</th>
+
+                            <th>Email</th>
+
+                            <th>UID</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="users-table-body">
+
+                        <!-- JavaScript data yahan ayega -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script type="module" src="admin.js"></script>
+
+</body>
+
+</html>
