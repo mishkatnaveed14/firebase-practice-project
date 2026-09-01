@@ -83,30 +83,40 @@ function login(email, password) {
 function togetloggedinuser() {
   onAuthStateChanged(auth, (user) => {
     console.log(user, "user kya user mila");
-    // agr user ha tu uski id or agr wo home.tml ma nhn ha tu ussay home.html ma 
+    // agr user ha tu uski id or agr wo home.tml ma nhn ha tu ussay home.html ma
     if (user) {
       const uid = user.uid;
       console.log(window.location, "===>> window currnt location");
-  //     if (!window.location.pathname == "/home.html") {
-  //       window.location.pathname == "/login.html";
-  //     }
-  //     console.log("jo user login ha uski user id ye ha", uid);
-  //   } else {
-  //     console.log("user login nhn ha ");
+      //     if (!window.location.pathname == "/home.html") {
+      //       window.location.pathname == "/login.html";
+      //     }
+      //     console.log("jo user login ha uski user id ye ha", uid);
+      //   } else {
+      //     console.log("user login nhn ha ");
 
-  //     if (
-  //       window.location.pathname == "/index.html" ||
-  //       window.location.pathname == "/login.html"
-  //     ) {
-  //       console.log("I am already in login or signup page ");
-  //     } else {
-  //       window.location.path = "/login.html";
-  //     }
-  if(){
-    
-  }
-     }
-   });
+      //     if (
+      //       window.location.pathname == "/index.html" ||
+      //       window.location.pathname == "/login.html"
+      //     ) {
+      //       console.log("I am already in login or signup page ");
+      //     } else {
+      //       window.location.path = "/login.html";
+      //     }
+      if (
+        window.location.pathname == "/login.html" ||
+        window.location.pathname == "/signup.html"
+      ) {
+        window.location = "./home.html";
+        log("I am already in login or signup page ");
+      } else if (window.location.pathname == "/home.html") {
+        console.log("I am already in home page");
+      } else if (window.location.pathname == "/index.html") {
+        window.location = "/home.html";
+      } else {
+        window.location = "/home.html";
+      }
+    }
+  });
 }
 
 function logout() {
