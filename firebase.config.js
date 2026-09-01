@@ -89,7 +89,7 @@ function togetloggedinuser() {
       const uid = user.uid;
       console.log(window.location, "===>> window currnt location");
       if (!window.location.pathname == "/home.html") {
-        window.location.pathname == "/home.html";
+        window.location.pathname == "/login.html";
       }
       console.log("jo user login ha uski user id ye ha", uid);
     } else {
