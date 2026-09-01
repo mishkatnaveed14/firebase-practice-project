@@ -84,11 +84,9 @@ function login(email, password) {
 
 // ===========>>>>>>>>>> firestore database <<<<<<<<<<<<====================
 // crud ka creste user details
-function userdetails() {
-  await setDoc(doc(db, "cities", "LA"), {
-  name: "Los Angeles",
-  state: "CA",
-  country: "USA"
+async function userdetails(userdetail) {
+  // ye setdoc function ha jo apnay andar aik parameter le rha ha doc ka or doc apnay andar 2 prameters le rha ha  or 1t parameter apnay 3 parameters lr rha ha aik db--> database ka or 2nd: collection name or 3rd: id mangta ha or 2nd paramerter ha doc ka object ya tu object bana do ya tu object pass kr do
+  await setDoc(doc(db, "users", "1234"), {userdetail
 });
 
 
