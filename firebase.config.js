@@ -108,6 +108,7 @@ function togetloggedinuser() {
 function logout (){
 signOut(auth).then(() => {
   // Sign-out successful.
+  window.location = "./login.html"
 }).catch((error) => {
   // An error happened.
 });
@@ -139,4 +140,4 @@ async function getalldata() {
 
 //
 
-export { signup, login, getsingleuserdata, getalldata, togetloggedinuser };
+export { signup, login, getsingleuserdata, getalldata, togetloggedinuser ,logout};
