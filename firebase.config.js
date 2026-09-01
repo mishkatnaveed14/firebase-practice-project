@@ -78,15 +78,19 @@ function login(email, password) {
       console.log(error.code, error.message, "===> error while logging in");
     });
 }
+
 // role base page routing
 function togetloggedinuser() {
   onAuthStateChanged(auth, (user) => {
     console.log(user, "user kya user mila");
-let e;
-    if ((user)) {
+    let e;
+    if (user) {
       const uid = user.uid;
-      e.preventDefault();
-      window.location = "./home.html";
+      // e.preventDefault();
+    //  window.location = "./home.html"
+   console.log(window.location(),"===>> window currnt location");
+   
+
       console.log(uid, "jo user login ha uski user id ye ha");
 
       // ...
