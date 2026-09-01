@@ -3,8 +3,9 @@ import {
   login,
   getsingleuserdata,
   getalldata,
+  togetloggedinuser,
 } from "./firebase.config.js";
-
+togetloggedinuser()
 // =========================
 // SIGN IN
 // =========================
