@@ -102,6 +102,9 @@ function togetloggedinuser() {
   //     } else {
   //       window.location.path = "/login.html";
   //     }
+  if(){
+    
+  }
      }
    });
 }
