@@ -29,12 +29,12 @@ document.getElementById("signup-btn").addEventListener("click", (e) => {
 });
 
 
-// get data 
+// get data (read data crud )
 const btn = document.getElementById("getsingledata")
 btn.addEventListener("click",()=> {
   getsingleuserdata("zmAyhs3pPeXYxvyfqsAYC8kC2Dw2")
 } )
-// get all data
+// get all data (read data crud)
 const btn2 = document.getElementById("getalldata")
 btn2.addEventListener("click",()=> {
   getalldata()
