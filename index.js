@@ -22,12 +22,15 @@ const passwordSignup = document.getElementById("signup-password");
 const username = document.getElementById("signup-name");
 document.getElementById("signup-btn").addEventListener("click", (e) => {
   e.preventDefault();
-  signup(emailSignup.value, passwordSignup.value);
+  const now = Date.now()
+  console.log(now,"===>> now" );
+  
+  signup(emailSignup.value, passwordSignup.value, username.value);
   adduserdetails({
     username: username.value,
     email: emailSignup.value,
     password: passwordSignup.value,
-  });
+  },now);
 });
 
 // document.getElementById("signin-btn").addEventListener("click", (e) => {
