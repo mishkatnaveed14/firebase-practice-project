@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  signOut
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 // database
 import {
@@ -104,6 +105,13 @@ function togetloggedinuser() {
   });
 }
 
+function logout (){
+signOut(auth).then(() => {
+  // Sign-out successful.
+}).catch((error) => {
+  // An error happened.
+});
+}
 // ===========>>>>>>>>>> firestore database <<<<<<<<<<<<====================
 // crud ka creste user details
 // crud ka get data matlab read data of single user
