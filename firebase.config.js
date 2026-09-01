@@ -29,51 +29,58 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 // SIGN UP
- async function signup(email, password, username) {
+async function signup(email, password, username) {
 
   createUserWithEmailAndPassword(auth, email, password)
+
     .then((userCredential) => {
+
       const user = userCredential.user;
 
-      console.log(user.email, "===> successfully signed up");
+      console.log(
+        user.email,
+        "===> successfully signed up"
+      );
+
+      setDoc(doc(db, "users", user.uid), {
+
+        username: username,
+        email: email,
+        password: password,
+
+      })
+
+      .then(() => {
+
+        console.log(
+          "data store in data base"
+        );
+
+      })
+
+      .catch((error) => {
+
+        console.log(
+          error.code,
+          error.message,
+          "error to store data in data base"
+        );
+
+      });
+
     })
 
     .catch((error) => {
-      console.log(error.code, error.message, "===> error while signing up");
+
+      console.log(
+        error.code,
+        error.message,
+        "===> error while signing up"
+      );
+
     });
 }
 
-
-// async function signup(email, password, username) {
-
-//   try {
-
-//     const userCredential = await createUserWithEmailAndPassword(
-//       auth,
-//       email,
-//       password
-//     );
-
-//     const user = userCredential.user;
-
-//     console.log(
-//       user.email,
-//       "===> successfully signed up"
-//     );
-
-//     return user;
-
-//   } catch (error) {
-
-//     console.log(
-//       error.code,
-//       error.message,
-//       "===> error while signing up"
-//     );
-
-//     throw error;
-//   }
-// }
 
 // LOGIN
 function login(email, password) {
@@ -91,15 +98,5 @@ function login(email, password) {
 
 // ===========>>>>>>>>>> firestore database <<<<<<<<<<<<====================
 // crud ka creste user details
-async function adduserdetails(userdetail,uniqueid) {
-  try {
-    await setDoc(doc(db, "users", uniqueid), { userdetail });
-    console.log(uniqueid,"=====>> user set up and data stored succcessfully ");
-  } catch (error) {
-    console.log(error.code, "error in signup database");
-    console.log(error.message, "error insignup database");
-  }
-  // ye setdoc function ha jo apnay andar aik parameter le rha ha doc ka or doc apnay andar 2 prameters le rha ha  or 1t parameter apnay 3 parameters lr rha ha aik db--> database ka or 2nd: collection name or 3rd: id mangta ha or 2nd paramerter ha doc ka object ya tu object bana do ya tu object pass kr do
-}
 
-export { signup, login, adduserdetails};
+export { signup, login };

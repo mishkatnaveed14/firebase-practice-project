@@ -1,4 +1,4 @@
-import { signup, login, adduserdetails } from "./firebase.config.js";
+import { signup, login,  } from "./firebase.config.js";
 
 // =========================
 // SIGN IN
@@ -21,28 +21,11 @@ const emailSignup = document.getElementById("signup-email");
 const passwordSignup = document.getElementById("signup-password");
 const username = document.getElementById("signup-name");
 
-document.getElementById("signup-btn").addEventListener("click", async (e) => {
+document.getElementById("signup-btn").addEventListener("click", (e) => {
   e.preventDefault();
-  const now = Date.now();
-  console.log(now, "===>> now");
-  try {
-    const user = await signup(
-      emailSignup.value,
-      passwordSignup.value,
-      username.value,
-    );
-    console.log(emailSignup.value, passwordSignup.value, username.value);
-    await adduserdetails(
-      {
-        username: username.value,
-        email: emailSignup.value,
-        password: passwordSignup.value,
-      },
-      now + "",
-    );
-  } catch (error) {
-        console.log("Signup failed");
-  }
+   signup(
+      emailSignup.value, passwordSignup.value, username.value );
+   
 });
 
 // document.getElementById("signin-btn").addEventListener("click", (e) => {
