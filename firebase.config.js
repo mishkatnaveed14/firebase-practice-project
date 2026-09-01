@@ -9,7 +9,9 @@ import {
   getFirestore,
   doc,
   setDoc,
-   getDoc
+   getDoc,
+   collection, query, where, getDocs
+
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 // change for all different projects
@@ -99,8 +101,7 @@ function login(email, password) {
 
 // ===========>>>>>>>>>> firestore database <<<<<<<<<<<<====================
 // crud ka creste user details
-// crud ka get data matlab read data 
-
+// crud ka get data matlab read data of single user
 async function getsingleuserdata(uniqueid){
 
 const docRef = doc(db, "users", uniqueid);
@@ -113,5 +114,15 @@ if (docSnap.exists()) {
   console.log("No such document!");
 }
 }
+// crud ka read data matlab multiple data 
+async function getalldata (){
+  const q = query(collection(db, "users"));
 
-export { signup, login, getsingleuserdata };
+const querySnapshot = await getDocs(q);
+querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  console.log(doc.id, " => ", doc.data());
+});
+}
+
+export { signup, login, getsingleuserdata,getalldata };

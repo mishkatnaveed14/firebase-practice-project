@@ -1,4 +1,4 @@
-import { signup, login, getsingleuserdata,  } from "./firebase.config.js";
+import { signup, login, getsingleuserdata, getalldata,  } from "./firebase.config.js";
 
 // =========================
 // SIGN IN
@@ -34,7 +34,11 @@ const btn = document.getElementById("getsingledata")
 btn.addEventListener("click",()=> {
   getsingleuserdata("zmAyhs3pPeXYxvyfqsAYC8kC2Dw2")
 } )
-
+const btn2 = document.getElementById("getalldata")
+btn.addEventListener("click",()=> {
+  getalldata()
+} )
+// 
 // document.getElementById("signin-btn").addEventListener("click", (e) => {
 //   e.preventDefault();
 //   alert("Sign In button clicked! and succecfully sign in");
