@@ -3,15 +3,18 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 // database
 import {
   getFirestore,
   doc,
   setDoc,
-   getDoc,
-   collection, query, where, getDocs
-
+  getDoc,
+  collection,
+  query,
+  where,
+  getDocs,
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 // change for all different projects
@@ -33,57 +36,34 @@ const db = getFirestore(app);
 
 // SIGN UP
 async function signup(email, password, username) {
-
   createUserWithEmailAndPassword(auth, email, password)
-
     .then((userCredential) => {
-
       const user = userCredential.user;
 
-      console.log(
-        user.email,
-        "===> successfully signed up"
-      );
+      console.log(user.email, "===> successfully signed up");
 
       setDoc(doc(db, "users", user.uid), {
-
         username: username,
         email: email,
         password: password,
-
       })
+        .then(() => {
+          console.log("data store in data base");
+        })
 
-      .then(() => {
-
-        console.log(
-          "data store in data base"
-        );
-
-      })
-
-      .catch((error) => {
-
-        console.log(
-          error.code,
-          error.message,
-          "error to store data in data base"
-        );
-
-      });
-
+        .catch((error) => {
+          console.log(
+            error.code,
+            error.message,
+            "error to store data in data base",
+          );
+        });
     })
 
     .catch((error) => {
-
-      console.log(
-        error.code,
-        error.message,
-        "===> error while signing up"
-      );
-
+      console.log(error.code, error.message, "===> error while signing up");
     });
 }
-
 
 // LOGIN
 function login(email, password) {
@@ -98,31 +78,50 @@ function login(email, password) {
       console.log(error.code, error.message, "===> error while logging in");
     });
 }
+// role base page routing
+function togetloggedinuser() {
+  onAuthStateChanged(auth, (user) => {
+    console.log(user, "user kya user mila");
+
+    if (user) {
+      const uid = user.uid;
+      window.location = "./home.html";
+      console.log(uid, "jo user login hauski user id ye ha");
+
+      // ...
+    } else {
+      console.log("user login nhn ha ");
+
+      window.location = "./login.html";
+    }
+  });
+}
 
 // ===========>>>>>>>>>> firestore database <<<<<<<<<<<<====================
 // crud ka creste user details
 // crud ka get data matlab read data of single user
-async function getsingleuserdata(uniqueid){
+async function getsingleuserdata(uniqueid) {
+  const docRef = doc(db, "users", uniqueid);
+  const docSnap = await getDoc(docRef);
 
-const docRef = doc(db, "users", uniqueid);
-const docSnap = await getDoc(docRef);
-
-if (docSnap.exists()) {
-  console.log("Document data:", docSnap.data());
-} else {
-  // docSnap.data() will be undefined in this case
-  console.log("No such document!");
+  if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data());
+  } else {
+    // docSnap.data() will be undefined in this case
+    console.log("No such document!");
+  }
 }
-}
-// crud ka read data matlab multiple data 
-async function getalldata (){
+// crud ka read data matlab multiple data
+async function getalldata() {
   const q = query(collection(db, "users"));
 
-const querySnapshot = await getDocs(q);
-querySnapshot.forEach((doc) => {
-  // doc.data() is never undefined for query doc snapshots
-  console.log(doc.id, " => ", doc.data());
-});
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, " => ", doc.data());
+  });
 }
 
-export { signup, login, getsingleuserdata,getalldata };
+//
+
+export { signup, login, getsingleuserdata, getalldata, togetloggedinuser };
