@@ -30,3 +30,11 @@ document.getElementById("signup-btn").addEventListener("click", (e) => {
     password: passwordSignup.value,
 });
 });
+
+// button working
+document.getElementById("signup-btn").addEventListener("click", (e) => {
+  e.preventDefault(); 
+  alert("Sign Up button clicked! and succecfully sign up");});
+document.getElementById("signin-btn").addEventListener("click", (e) => {
+  e.preventDefault(); 
+  alert("Sign In button clicked! and succecfully sign in");} );
