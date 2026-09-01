@@ -29,8 +29,9 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 // SIGN UP
- async function signup(email, password,username) {
-  createUserWithEmailAndPassword(auth, email, password,username)
+ async function signup(email, password, username) {
+
+  createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
 
@@ -41,6 +42,38 @@ const db = getFirestore(app);
       console.log(error.code, error.message, "===> error while signing up");
     });
 }
+
+
+// async function signup(email, password, username) {
+
+//   try {
+
+//     const userCredential = await createUserWithEmailAndPassword(
+//       auth,
+//       email,
+//       password
+//     );
+
+//     const user = userCredential.user;
+
+//     console.log(
+//       user.email,
+//       "===> successfully signed up"
+//     );
+
+//     return user;
+
+//   } catch (error) {
+
+//     console.log(
+//       error.code,
+//       error.message,
+//       "===> error while signing up"
+//     );
+
+//     throw error;
+//   }
+// }
 
 // LOGIN
 function login(email, password) {
