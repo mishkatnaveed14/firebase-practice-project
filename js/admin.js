@@ -10,8 +10,8 @@ async function showUsers() {
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${index + 1}</td>
-      <td>${user.username || "N/A"}</td>
-      <td>${user.email || "N/A"}</td>
+      <td>${user.username || "Nothing"}</td>
+      <td>${user.email || "nothing"}</td>
       <td>${user.id}</td>
     `;
     tableBody.appendChild(row);
