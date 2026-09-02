@@ -125,15 +125,10 @@ function togetloggedinuser() {
         window.location.href = "/html/home.html";
       }
     } else {
-      // =========================
-      // USER NOT LOGGED IN
-      // =========================
       if (
         window.location.pathname === "/index.html" ||
         window.location.pathname === "/"
       ) {
-        // IMPORTANT:
-        // Index page par hi rehne do
         console.log("I am on index page");
       } else if (window.location.pathname === "/html/login.html") {
         console.log("I am already on login page");
@@ -143,8 +138,6 @@ function togetloggedinuser() {
         window.location.pathname === "/html/home.html" ||
         window.location.pathname === "/html/admin.html"
       ) {
-        // Login nahi hai, protected page par aa gaya
-        // login page par bhejo
         window.location.href = "/html/login.html";
       }
     }
@@ -179,36 +172,21 @@ async function getsingleuserdata(uniqueid) {
 async function getalldata() {
 
   try {
-
     const q = query(collection(db, "users"));
-
     const querySnapshot = await getDocs(q);
-
     const users = [];
-
     querySnapshot.forEach((doc) => {
-
       console.log(doc.id, " => ", doc.data());
-
       users.push({
         id: doc.id,
         ...doc.data()
       });
-
     });
-
     return users;
-
   } catch (error) {
-
     console.log(
-      error.code,
-      error.message,
-      "error while getting all users"
-    );
-
+      error.code,error.message,"error while getting all users");
   }
-
 }
 //
 
