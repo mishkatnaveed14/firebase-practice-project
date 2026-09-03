@@ -105,6 +105,39 @@ body {
     margin-bottom: 30px;
 }
 
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.search-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
+.user-search {
+    width: 210px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #171b2b;
+    color: #fff;
+    padding: 10px 12px;
+    border-radius: 8px;
+    outline: none;
+}
+
+.user-search::placeholder {
+    color: #7f879a;
+}
+
+.user-search:focus {
+    border-color: #6366f1;
+}
+
 .topbar h1 {
     font-size: 28px;
 
@@ -117,6 +150,16 @@ body {
     font-size: 14px;
 }
 
+
+    .topbar-actions {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .user-search {
+        flex: 1;
+        min-width: 160px;
+    }
 .logout-btn {
     border: 1px solid rgba(255, 255, 255, 0.1);
 

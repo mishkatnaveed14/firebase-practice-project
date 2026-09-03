@@ -31,7 +31,17 @@
           <p>Welcome back, Admin</p>
         </div>
 
-        <button id="logout-btn" class="logout-btn">Logout</button>
+        <div class="topbar-actions">
+          <label class="search-label" for="user-search">Search users</label>
+          <input
+            id="user-search"
+            class="user-search"
+            type="search"
+            placeholder="Search by name"
+            autocomplete="off"
+          />
+          <button id="logout-btn" class="logout-btn">Logout</button>
+        </div>
        
       </header>
       <!-- STATS -->
@@ -81,7 +91,7 @@
                 <th>Username</th>
                 <th>Email</th>
                 <th>UID</th>
-                <th>Action</th>
+                <th colspan="3">Action</th>
               </tr>
             </thead>
             <tbody id="users-table-body"> <!-- js work -->

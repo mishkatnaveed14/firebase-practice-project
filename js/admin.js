@@ -11,10 +11,10 @@ togetloggedinuser();
 const tableBody = document.getElementById("users-table-body");
 const totalUsers = document.getElementById("total-users");
 const refreshBtn = document.getElementById("refresh-btn");
+const userSearch = document.getElementById("user-search");
+let allUsers = [];
 
-async function showUsers() {
-  const users = await getalldata();
-  if (!users) return;
+function renderUsers(users) {
   tableBody.innerHTML = "";
   users.forEach((user, index) => {
     const row = document.createElement("tr");
@@ -31,12 +31,29 @@ async function showUsers() {
   });
   totalUsers.textContent = users.length;
 }
+
+async function showUsers() {
+  const users = await getalldata();
+  if (!users) return;
+  allUsers = users;
+  filterUsers();
+}
+
+function filterUsers() {
+  const searchTerm = userSearch.value.trim().toLowerCase();
+  const filteredUsers = allUsers.filter((user) =>
+    (user.username || "").toLowerCase().includes(searchTerm),
+  );
+  renderUsers(filteredUsers);
+}
+
 showUsers();
 document.getElementById("logout-btn").addEventListener("click", (e) => {
   e.preventDefault();
   logout();
 });
 refreshBtn.addEventListener("click", showUsers);
+userSearch.addEventListener("input", filterUsers);
 
 tableBody.addEventListener("click", async (event) => {
   const button = event.target.closest("button[data-action]");
