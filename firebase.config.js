@@ -83,11 +83,42 @@ function login(email, password) {
 
 // role base page routing
 function togetloggedinuser() {
-  onAuthStateChanged(auth, (user) => {
+  onAuthStateChanged(auth, async (user) => {
     console.log(user, "user kya user mila");
-    const currentpath = window.location.pathname
+    const currentpath = window.location.pathname;
     console.log(currentpath);
-    
+    if (user) {
+      const user_data = await getsingleuserdata(user.uid);
+      if (!user_data) {
+        console.log("user is not avaiable!!");
+      }
+      const role = user_data.role;
+      const status = user_data.status;
+      if (status == "Blocked") {
+        alert("Aapka account block kr dia gya ha");
+        await signOut(auth);
+        window.location.href = "/html/public/login.html"
+        return
+      }
+      if (role === "user"&& currentpath === "/html/admin/" ) {
+        alert("Acess denied on admin page ")
+        window.location.href = "/html/public/home.html"
+        return
+      }
+      if (currentpath === "/signup.html"||currentpath === "/html/public/login.html"|| currentpath === "/" ) {
+        if (role === "admin") {
+          window.location.href = "/html/admin/admin-dashboard.html"
+        }else{
+           window.location.href = "/html/public/home.html"
+        }
+      }
+    }else {
+     const isProtected = currentpath.includes("/admin/") || currentpath.includes("/user/");
+      if (isProtected) {
+        window.location.href = "/html/public/login.html";
+      }
+    }
+
     // agr user ha tu uski id or agr wo home.tml ma nhn ha tu ussay home.html ma
     // if (user) {
     //   const uid = user.uid;
@@ -126,8 +157,6 @@ function togetloggedinuser() {
     //     window.location.href = "/html/login.html";
     //   }
     // }
-
-    
   });
 }
 
@@ -157,7 +186,6 @@ async function getsingleuserdata(uniqueid) {
 }
 // crud ka read data matlab multiple data
 async function getalldata() {
-
   try {
     const q = query(collection(db, "users"));
     const querySnapshot = await getDocs(q);
@@ -166,13 +194,12 @@ async function getalldata() {
       console.log(doc.id, " => ", doc.data());
       users.push({
         id: doc.id,
-        ...doc.data()
+        ...doc.data(),
       });
     });
     return users;
   } catch (error) {
-    console.log(
-      error.code,error.message,"error while getting all users");
+    console.log(error.code, error.message, "error while getting all users");
   }
 }
 //
