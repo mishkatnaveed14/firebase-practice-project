@@ -6,11 +6,6 @@ import {
 } from "../firebase.config.js";
 togetloggedinuser()
 
-
-// =========================
-// SIGN UP
-// =========================
-
 const emailSignup = document.getElementById("signup-email");
 const passwordSignup = document.getElementById("signup-password");
 const username = document.getElementById("signup-name");
