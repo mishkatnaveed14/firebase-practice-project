@@ -45,11 +45,12 @@ async function signup(email, password, username) {
       setDoc(doc(db, "users", user.uid), {
         username: username,
         email: email,
-        password: password,
+        role: "user",
+        status: "Active",
       })
         .then(() => {
           console.log("data store in data base");
-          window.location.href = "/html/home.html";
+          window.location.href = "/html/public/home.html";
         })
 
         .catch((error) => {
@@ -73,7 +74,7 @@ function login(email, password) {
       const user = userCredential.user;
 
       console.log(user.email, "===> login successfully");
-      window.location.href = "/html/home.html";
+      window.location.href = "/html/public/home.html";
     })
 
     .catch((error) => {
@@ -91,31 +92,37 @@ function togetloggedinuser() {
       const user_data = await getsingleuserdata(user.uid);
       if (!user_data) {
         console.log("user is not avaiable!!");
+        return;
       }
       const role = user_data.role;
       const status = user_data.status;
       if (status == "Blocked") {
         alert("Aapka account block kr dia gya ha");
         await signOut(auth);
-        window.location.href = "/html/public/login.html"
-        return
+        window.location.pathname = "/html/public/login.html";
+        return;
       }
-      if (role === "user"&& currentpath === "/html/admin/" ) {
-        alert("Acess denied on admin page ")
-        window.location.href = "/html/public/home.html"
-        return
+      if (role !== "admin" && currentpath.includes("/html/admin/")) {
+        alert("Acess denied on admin page");
+        window.location.pathname = "/html/public/home.html";
+        return;
       }
-      if (currentpath === "/signup.html"||currentpath === "/html/public/login.html"|| currentpath === "/" ) {
+      if (
+        currentpath === "/html/public/signup.html" ||
+        currentpath === "/html/public/login.html" ||
+        currentpath === "/" ||
+        currentpath === "/index.html"
+      ) {
         if (role === "admin") {
-          window.location.href = "/html/admin/admin-dashboard.html"
-        }else{
-           window.location.href = "/html/public/home.html"
+          window.location.pathname = "/html/admin/admin-dashboard.html";
+        } else {
+          window.location.pathname = "/html/public/home.html";
         }
       }
     }else {
      const isProtected = currentpath.includes("/admin/") || currentpath.includes("/user/");
       if (isProtected) {
-        window.location.href = "/html/public/login.html";
+        window.location.pathname = "/html/public/login.html";
       }
     }
 
@@ -164,12 +171,16 @@ function logout() {
   signOut(auth)
     .then(() => {
       // Sign-out successful.
-      window.location = "./login.html";
+      window.location.assign("/html/public/login.html");
     })
     .catch((error) => {
-      // An error happened.
+      console.log(error.code, error.message, "===> error while logging out");
     });
 }
+
+
+
+
 // ===========>>>>>>>>>> firestore database <<<<<<<<<<<<====================
 // crud ka creste user details
 // crud ka get data matlab read data of single user
@@ -179,6 +190,7 @@ async function getsingleuserdata(uniqueid) {
 
   if (docSnap.exists()) {
     console.log("Document data:", docSnap.data());
+    return docSnap.data();
   } else {
     // docSnap.data() will be undefined in this case
     console.log("No such document!");
