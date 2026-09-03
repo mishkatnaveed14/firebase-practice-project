@@ -126,8 +126,9 @@ function togetloggedinuser() {
           window.location.pathname = "/html/public/home.html";
         }
       }
-    }else {
-     const isProtected = currentpath.includes("/admin/") || currentpath.includes("/user/");
+    } else {
+      const isProtected =
+        currentpath.includes("/admin/") || currentpath.includes("/user/");
       if (isProtected) {
         window.location.pathname = "/html/public/login.html";
       }
@@ -145,9 +146,6 @@ function logout() {
       console.log(error.code, error.message, "===> error while logging out");
     });
 }
-
-
-
 
 // ===========>>>>>>>>>> firestore database <<<<<<<<<<<<====================
 // crud ka creste user details
@@ -198,7 +196,6 @@ async function unblockUser(uniqueid) {
 }
 //
 
-
 export {
   signup,
   login,
@@ -207,7 +204,6 @@ export {
   getalldata,
   togetloggedinuser,
   logout,
-
   deleteUser,
   blockUser,
   unblockUser,
