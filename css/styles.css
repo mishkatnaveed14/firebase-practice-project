@@ -781,7 +781,7 @@ body {
     margin-top: 20px;
 }
 
-.detail-copy .quiet-link {
+        animation: none;
     display: inline-block;
     margin-top: 35px;
 }
@@ -1341,6 +1341,7 @@ body {
     border-radius: 2px;
     box-shadow: 18px 18px 0 #30483c;
     animation: revealCard .8s .15s ease both;
+    opacity: 1;
 }
 
 .auth-modal .modal-header {
@@ -1708,7 +1709,6 @@ body {
 
 @keyframes revealUp {
     from {
-        opacity: 0;
         transform: translateY(24px);
     }
 
@@ -1720,7 +1720,6 @@ body {
 
 @keyframes revealCard {
     from {
-        opacity: 0;
         transform: translateY(25px) rotate(1deg);
     }
 
