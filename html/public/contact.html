@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body class="storefront">
@@ -25,10 +26,13 @@
                 <p>Usually replies within one working day.</p>
             </div>
         </section>
+        <form id="contact-form" class="checkout-form contact-form"><h2>Send a note.</h2><label>Work email<input required type="email" placeholder="you@company.com"></label><label>How can we help?<textarea required rows="4" placeholder="Tell us what you need..."></textarea></label><button class="button" type="submit">Send message <span>↗</span></button><p id="contact-message" class="form-message" role="status"></p></form>
+        <aside class="contact-faq"><span class="eyebrow">Before you write</span><h2>Quick answers.</h2><details open><summary>Do you support wholesale?</summary><p>Yes, every catalog item includes a minimum order quantity for team purchasing.</p></details><details><summary>Where is my order?</summary><p>Send us your order number and we will help track it down.</p></details></aside>
     </main>
     <script type="module" src="/js/store.js"></script>
     <script type="module" src="/js/site-footer.js"></script>
     <script type="module" src="/js/page-guard.js"></script>
+    <script type="module" src="/js/contact.js"></script>
 </body>
 
 </html>
