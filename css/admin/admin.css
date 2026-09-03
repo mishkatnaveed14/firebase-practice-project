@@ -151,15 +151,16 @@ body {
 }
 
 
-    .topbar-actions {
-        width: 100%;
-        flex-wrap: wrap;
-    }
+.topbar-actions {
+    width: 100%;
+    flex-wrap: wrap;
+}
 
-    .user-search {
-        flex: 1;
-        min-width: 160px;
-    }
+.user-search {
+    flex: 1;
+    min-width: 160px;
+}
+
 .logout-btn {
     border: 1px solid rgba(255, 255, 255, 0.1);
 

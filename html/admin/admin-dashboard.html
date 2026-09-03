@@ -1,106 +1,102 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Admin Dashboard</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/css/admin/admin.css" />
-  </head>
+  <title>Admin Dashboard</title>
 
-  <body>
-    <!-- SIDEBAR -->
+  <link rel="stylesheet" href="/css/admin/admin.css" />
+</head>
 
-    <aside class="sidebar">
-      <div class="logo">Admin Panel</div>
+<body>
+  <!-- SIDEBAR -->
 
-      <nav>
-        <a href="#" class="active"> Dashboard </a>
+  <aside class="sidebar">
+    <div class="logo">Admin Panel</div>
 
-        <a href="#"> Users </a>
+    <nav>
+      <a href="#" class="active"> Dashboard </a>
 
-        <a href="#"> Settings </a>
-      </nav>
-    </aside>
-    <main class="main-content">
-      <header class="topbar">
+      <a href="#"> Users </a>
+
+      <a href="#"> Settings </a>
+    </nav>
+  </aside>
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <h1>Dashboard</h1>
+
+        <p>Welcome back, Admin</p>
+      </div>
+
+      <div class="topbar-actions">
+        <label class="search-label" for="user-search">Search users</label>
+        <input id="user-search" class="user-search" type="search" placeholder="Search by name" autocomplete="off" />
+        <button id="logout-btn" class="logout-btn">Logout</button>
+      </div>
+
+    </header>
+    <!-- STATS -->
+
+    <section class="stats">
+      <div class="stat-card">
         <div>
-          <h1>Dashboard</h1>
+          <p>Total Users</p>
 
-          <p>Welcome back, Admin</p>
+          <h2 id="total-users">0</h2>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div>
+          <p>Active Users</p>
+
+          <h2 id="active-users">0</h2>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div>
+          <p>New Users</p>
+
+          <h2 id="new-users">0</h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="table-section">
+      <div class="table-header">
+        <div>
+          <h2>Users</h2>
+
+          <p>All registered users</p>
         </div>
 
-        <div class="topbar-actions">
-          <label class="search-label" for="user-search">Search users</label>
-          <input
-            id="user-search"
-            class="user-search"
-            type="search"
-            placeholder="Search by name"
-            autocomplete="off"
-          />
-          <button id="logout-btn" class="logout-btn">Logout</button>
-        </div>
-       
-      </header>
-      <!-- STATS -->
+        <button id="refresh-btn" class="refresh-btn">Refresh</button>
+      </div>
 
-      <section class="stats">
-        <div class="stat-card">
-          <div>
-            <p>Total Users</p>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>UID</th>
+              <th colspan="3">Action</th>
+            </tr>
+          </thead>
+          <tbody id="users-table-body"> <!-- js work -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
 
-            <h2 id="total-users">0</h2>
-          </div>
-        </div>
+  <script type="module" src="/js/admin.js"></script>
+</body>
 
-        <div class="stat-card">
-          <div>
-            <p>Active Users</p>
-
-            <h2 id="active-users">0</h2>
-          </div>
-        </div>
-
-        <div class="stat-card">
-          <div>
-            <p>New Users</p>
-
-            <h2 id="new-users">0</h2>
-          </div>
-        </div>
-      </section>
-
-      <section class="table-section">
-        <div class="table-header">
-          <div>
-            <h2>Users</h2>
-
-            <p>All registered users</p>
-          </div>
-
-          <button id="refresh-btn" class="refresh-btn">Refresh</button>
-        </div>
-
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>UID</th>
-                <th colspan="3">Action</th>
-              </tr>
-            </thead>
-            <tbody id="users-table-body"> <!-- js work -->
-            </tbody>
-          </table>
-        </div>
-      </section>
-    </main>
-
-    <script type="module" src="/js/admin.js"></script>
-  </body>
 </html>
