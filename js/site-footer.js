@@ -4,18 +4,24 @@ footer.innerHTML = `<div class="footer-inner"><div><a class="brand" href="/html/
 document.body.appendChild(footer);
 
 function loadScript(source) {
-	return new Promise((resolve, reject) => {
-		const script = document.createElement("script");
-		script.src = source;
-		script.onload = resolve;
-		script.onerror = reject;
-		document.head.appendChild(script);
-	});
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = source;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
 }
 
 Promise.resolve()
-	.then(() => loadScript("https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"))
-	.then(() => loadScript("https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"))
-	.then(() => import("./motion.js"))
-	.then(({ initMotion }) => initMotion())
-	.catch(() => {});
+  .then(() =>
+    loadScript("https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"),
+  )
+  .then(() =>
+    loadScript(
+      "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js",
+    ),
+  )
+  .then(() => import("./motion.js"))
+  .then(({ initMotion }) => initMotion())
+  .catch(() => {});

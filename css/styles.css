@@ -1709,12 +1709,36 @@ body {
         font-size: 54px;
     }
 
-    .trust-strip { flex-wrap: wrap; justify-content: flex-start; }
-    .feature-section, .faq-section { padding-top: 65px; padding-bottom: 65px; }
-    .feature-grid, .principles-grid, .faq-section { grid-template-columns: 1fr; gap: 25px; }
-    .catalog-banner { align-items: flex-start; flex-direction: column; }
-    .quote-section { padding: 70px 20px; }
-    .quote-section blockquote { font-size: 30px; }
+    .trust-strip {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .feature-section,
+    .faq-section {
+        padding-top: 65px;
+        padding-bottom: 65px;
+    }
+
+    .feature-grid,
+    .principles-grid,
+    .faq-section {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .catalog-banner {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .quote-section {
+        padding: 70px 20px;
+    }
+
+    .quote-section blockquote {
+        font-size: 30px;
+    }
 }
 
 .site-footer {

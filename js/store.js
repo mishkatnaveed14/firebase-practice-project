@@ -79,13 +79,19 @@ const products = [
 
 const money = (value) => `$${value.toFixed(2)}`;
 const getCart = () => {
-  try { return JSON.parse(localStorage.getItem("cart") || "[]"); }
-  catch { return []; }
+  try {
+    return JSON.parse(localStorage.getItem("cart") || "[]");
+  } catch {
+    return [];
+  }
 };
 const saveCart = (cart) => localStorage.setItem("cart", JSON.stringify(cart));
 const getOrders = () => {
-  try { return JSON.parse(localStorage.getItem("orders") || "[]"); }
-  catch { return []; }
+  try {
+    return JSON.parse(localStorage.getItem("orders") || "[]");
+  } catch {
+    return [];
+  }
 };
 const productById = (id) => products.find((product) => product.id === id);
 
@@ -167,13 +173,16 @@ function renderShop() {
     const term = search.value.toLowerCase().trim();
     const selected = category.value;
     const inStock = document.getElementById("stock-filter")?.checked;
-    const minimumOrder = Number(document.getElementById("moq-filter")?.value || 0);
+    const minimumOrder = Number(
+      document.getElementById("moq-filter")?.value || 0,
+    );
     renderProducts(
       products.filter(
         (product) =>
           (!term || product.name.toLowerCase().includes(term)) &&
           (!selected || product.category === selected) &&
-          (!inStock || product.stock > 0) && product.moq >= minimumOrder,
+          (!inStock || product.stock > 0) &&
+          product.moq >= minimumOrder,
       ),
     );
   };
@@ -202,15 +211,19 @@ function renderCart() {
         )
         .join("")
     : `<div class="empty-state"><h2>Your bag is quiet.</h2><p>Find something useful, beautiful, or both.</p><a class="button" href="/html/public/shop.html">Continue shopping</a></div>`;
-  document.getElementById("cart-subtotal")?.replaceChildren(document.createTextNode(money(subtotal)));
-  document.getElementById("checkout-link")?.classList.toggle("disabled", !items.length);
+  document
+    .getElementById("cart-subtotal")
+    ?.replaceChildren(document.createTextNode(money(subtotal)));
+  document
+    .getElementById("checkout-link")
+    ?.classList.toggle("disabled", !items.length);
 }
 
 function renderDetail() {
   const product =
     productById(new URLSearchParams(location.search).get("id")) || products[0];
   document.getElementById("detail-content").innerHTML =
-    `<div class="detail-image"><img src="${product.image}" alt="${product.name}"></div><div class="detail-copy"><span class="eyebrow">${product.category} / ${product.rating} ★</span><h1>${product.name}</h1><p>${product.description}</p><strong class="detail-price">${money(product.price)}</strong><div class="detail-actions"><input id="detail-quantity" type="number" min="1" value="1"><button class="button" data-detail-add="${product.id}">Add to bag</button></div><a class="quiet-link" href="/html/public/shop.html">← Back to shop</a></div>`;
+    `<div><div class="detail-image"><img src="${product.image}" alt="${product.name}"></div><div class="detail-thumbs"><img src="${product.image}" alt="${product.name} alternate view"><img src="${product.image}&sat=-20" alt="${product.name} detail view"></div></div><div class="detail-copy"><span class="eyebrow">${product.category} / ${product.rating} ★</span><h1>${product.name}</h1><p>${product.description}</p><strong class="detail-price">${money(product.price)} <small>/ unit</small></strong><div class="bulk-table"><div><span>10–49 units</span><strong>${money(product.price)}</strong></div><div><span>50–99 units</span><strong>${money(product.price * .9)}</strong></div><div><span>100+ units</span><strong>${money(product.price * .82)}</strong></div></div><div class="stock-line"><span class="stock-badge">${product.stock ? `${product.stock} units ready to ship` : "Currently unavailable"}</span><span>MOQ: ${product.moq} units</span></div><div class="detail-actions"><input id="detail-quantity" type="number" min="${product.moq}" value="${product.moq}"><button class="button" data-detail-add="${product.id}" ${product.stock ? "" : "disabled"}>Add to bag</button></div><a class="quiet-link" href="/html/public/shop.html">← Back to shop</a></div><section class="specs-panel"><span class="eyebrow">Product notes</span><h2>Made for repeat buying.</h2><div class="specs-grid"><span>Availability<strong>${product.stock ? "In stock" : "Back soon"}</strong></span><span>Category<strong>${product.category}</strong></span><span>Minimum order<strong>${product.moq} units</strong></span></div></section>`;
 }
 
 function renderCheckout() {

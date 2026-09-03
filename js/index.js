@@ -7,13 +7,18 @@ const username = document.getElementById("signup-name");
 const signupForm = document.getElementById("formSignup");
 
 if (signupForm) {
-  document.querySelector(".toggle-password")?.addEventListener("click", (event) => {
-    const button = event.currentTarget;
-    const isPassword = passwordSignup.type === "password";
-    passwordSignup.type = isPassword ? "text" : "password";
-    button.textContent = isPassword ? "🙈" : "👁️";
-    button.setAttribute("aria-label", isPassword ? "Hide password" : "Show password");
-  });
+  document
+    .querySelector(".toggle-password")
+    ?.addEventListener("click", (event) => {
+      const button = event.currentTarget;
+      const isPassword = passwordSignup.type === "password";
+      passwordSignup.type = isPassword ? "text" : "password";
+      button.textContent = isPassword ? "🙈" : "👁️";
+      button.setAttribute(
+        "aria-label",
+        isPassword ? "Hide password" : "Show password",
+      );
+    });
 
   signupForm.addEventListener("submit", (e) => {
     e.preventDefault();
