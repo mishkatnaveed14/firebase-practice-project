@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <h1>admin orders </h1>
+
+<body class="storefront">
+    <nav class="site-nav"><a class="brand" href="/html/admin/admin-dashboard.html">Morrow<span>.</span> Admin</a>
+        <div class="nav-links"><a href="/html/admin/admin-dashboard.html">Dashboard</a><a
+                href="/html/admin/admin-products.html">Products</a><a class="active"
+                href="/html/admin/admin-orders.html">Orders</a></div>
+    </nav>
+    <main class="page-shell">
+        <div class="page-intro compact"><span class="eyebrow">Fulfilment</span>
+            <h1>Orders.</h1>
+            <p>Recent customer orders appear here after checkout.</p>
+        </div>
+        <div id="order-list" class="order-list"></div>
+    </main>
+    <script type="module" src="/js/store.js"></script>
     <script type="module" src="/js/page-guard.js"></script>
 </body>
+
 </html>
