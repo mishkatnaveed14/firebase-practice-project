@@ -15,22 +15,26 @@ export function initMotion() {
     delay: 0.12,
     ease: "power2.out",
   });
-    animate(".product-card, .stat-card, .workspace-preview, .summary, .profile-panel", {
+  animate(
+    ".product-card, .stat-card, .workspace-preview, .summary, .profile-panel",
+    {
       y: 18,
       duration: 0.55,
       stagger: 0.07,
       delay: 0.2,
       ease: "power2.out",
-    });
+    },
+  );
   gsap.utils
     .toArray(".section-block, .table-section, .checkout-layout, .cart-layout")
     .forEach((section) => {
       if (!window.ScrollTrigger) return;
-      if (section) gsap.from(section, {
-        scrollTrigger: { trigger: section, start: "top 88%" },
-        y: 24,
-        duration: 0.65,
-        ease: "power2.out",
-      });
+      if (section)
+        gsap.from(section, {
+          scrollTrigger: { trigger: section, start: "top 88%" },
+          y: 24,
+          duration: 0.65,
+          ease: "power2.out",
+        });
     });
 }

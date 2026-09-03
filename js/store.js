@@ -217,10 +217,14 @@ function renderCart() {
   document
     .getElementById("checkout-link")
     ?.classList.toggle("disabled", !items.length);
-  document.getElementById("checkout-link")?.toggleAttribute("aria-disabled", !items.length);
-  document.getElementById("checkout-link")?.addEventListener("click", (event) => {
-    if (!items.length) event.preventDefault();
-  });
+  document
+    .getElementById("checkout-link")
+    ?.toggleAttribute("aria-disabled", !items.length);
+  document
+    .getElementById("checkout-link")
+    ?.addEventListener("click", (event) => {
+      if (!items.length) event.preventDefault();
+    });
 }
 
 function renderDetail() {
