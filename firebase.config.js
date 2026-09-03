@@ -125,45 +125,6 @@ function togetloggedinuser() {
         window.location.pathname = "/html/public/login.html";
       }
     }
-
-    // agr user ha tu uski id or agr wo home.tml ma nhn ha tu ussay home.html ma
-    // if (user) {
-    //   const uid = user.uid;
-    //   console.log(window.location, "===>> window currnt location");
-    //   if (
-    //     window.location.pathname === "/html/login.html" ||
-    //     window.location.pathname === "/html/signup.html"
-    //   ) {
-    //     window.location.href = "/html/home.html";
-    //   } else if (window.location.pathname === "/html/home.html") {
-    //     console.log("I am already in home page");
-    //   } else if (window.location.pathname === "/html/admin.html") {
-    //     console.log("I am already in admin page");
-    //   } else if (
-    //     window.location.pathname === "./index.html" ||
-    //     window.location.pathname === "/"
-    //   ) {
-    //     // Agar logged-in user index par aaye
-    //     // to home par bhej do
-    //     window.location.href = "/html/home.html";
-    //   }
-    // } else {
-    //   if (
-    //     window.location.pathname === "/index.html" ||
-    //     window.location.pathname === "/"
-    //   ) {
-    //     console.log("I am on index page");
-    //   } else if (window.location.pathname === "/html/login.html") {
-    //     console.log("I am already on login page");
-    //   } else if (window.location.pathname === "/html/signup.html") {
-    //     console.log("I am already on signup page");
-    //   } else if (
-    //     window.location.pathname === "/html/home.html" ||
-    //     window.location.pathname === "/html/admin.html"
-    //   ) {
-    //     window.location.href = "/html/login.html";
-    //   }
-    // }
   });
 }
 
