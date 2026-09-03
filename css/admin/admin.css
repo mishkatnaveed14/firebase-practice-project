@@ -233,6 +233,27 @@ body {
     overflow: hidden;
 }
 
+.overview-section {
+    margin-bottom: 30px;
+}
+
+.overview-section .table-header a {
+    text-decoration: none;
+}
+
+.status-pill {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: rgba(74, 222, 128, 0.12);
+    color: #86efac;
+    font-size: 11px;
+}
+
+.legacy-stat {
+    border-color: rgba(165, 180, 252, 0.25);
+}
+
 .table-header {
     padding: 22px;
 
