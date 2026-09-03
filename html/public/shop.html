@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body class="storefront">
@@ -18,6 +19,7 @@
             <h1>Find your next favorite.</h1>
             <p>Thoughtful pieces for daily rituals, rooms, and movement.</p>
         </div>
+        <div class="catalog-banner"><div><span class="eyebrow">Built for buying teams</span><h2>Order with clarity.<br>Scale with confidence.</h2></div><p>Transparent minimums, dependable stock, and a considered catalog for the workday.</p></div>
         <div class="shop-tools"><input id="shop-search" type="search" placeholder="Search the collection"><select
                 id="category-filter">
                 <option value="">All categories</option>
@@ -25,7 +27,7 @@
                 <option>Accessories</option>
                 <option>Footwear</option>
                 <option>Home</option>
-            </select></div>
+            </select><select id="moq-filter"><option value="0">Any order size</option><option value="10">MOQ 10+</option><option value="20">MOQ 20+</option></select><label class="stock-toggle"><input id="stock-filter" type="checkbox"> In stock only</label></div>
         <div id="product-grid" class="product-grid"></div>
     </main>
     <div id="toast" class="toast"></div>

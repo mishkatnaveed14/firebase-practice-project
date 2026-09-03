@@ -9,6 +9,8 @@ const products = [
       "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=900&q=80",
     description:
       "A soft, structured knit made for slow mornings and long city walks.",
+    stock: 84,
+    moq: 10,
   },
   {
     id: "p2",
@@ -20,6 +22,8 @@ const products = [
       "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=900&q=80",
     description:
       "A roomy canvas carryall with a considered shape and everyday utility.",
+    stock: 31,
+    moq: 25,
   },
   {
     id: "p3",
@@ -31,6 +35,8 @@ const products = [
       "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80",
     description:
       "Lightweight comfort with a bright, modern silhouette for daily miles.",
+    stock: 8,
+    moq: 10,
   },
   {
     id: "p4",
@@ -42,6 +48,8 @@ const products = [
       "https://images.unsplash.com/photo-1572119865084-43c285814d63?auto=format&fit=crop&w=900&q=80",
     description:
       "Hand-finished ceramic pieces that bring a warm ritual to your table.",
+    stock: 62,
+    moq: 10,
   },
   {
     id: "p5",
@@ -52,6 +60,8 @@ const products = [
     image:
       "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=900&q=80",
     description: "Breathable linen tailoring with an easy fit and clean lines.",
+    stock: 0,
+    moq: 20,
   },
   {
     id: "p6",
@@ -62,13 +72,21 @@ const products = [
     image:
       "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=80",
     description: "A sculptural lamp for focused work and softer evenings.",
+    stock: 19,
+    moq: 5,
   },
 ];
 
 const money = (value) => `$${value.toFixed(2)}`;
-const getCart = () => JSON.parse(localStorage.getItem("cart") || "[]");
+const getCart = () => {
+  try { return JSON.parse(localStorage.getItem("cart") || "[]"); }
+  catch { return []; }
+};
 const saveCart = (cart) => localStorage.setItem("cart", JSON.stringify(cart));
-const getOrders = () => JSON.parse(localStorage.getItem("orders") || "[]");
+const getOrders = () => {
+  try { return JSON.parse(localStorage.getItem("orders") || "[]"); }
+  catch { return []; }
+};
 const productById = (id) => products.find((product) => product.id === id);
 
 function cartItems() {
@@ -123,10 +141,10 @@ function showToast(message) {
 
 function productCard(product) {
   return `<article class="product-card">
-    <a class="product-image" href="/html/public/product-detail.html?id=${product.id}"><img src="${product.image}" alt="${product.name}"></a>
-    <div class="product-meta"><span>${product.category}</span><span>★ ${product.rating}</span></div>
+    <div class="product-image-wrap"><a class="product-image" href="/html/public/product-detail.html?id=${product.id}"><img src="${product.image}" alt="${product.name}"></a><span class="stock-badge ${product.stock ? "" : "sold-out"}">${product.stock ? `${product.stock} in stock` : "Out of stock"}</span></div>
+    <div class="product-meta"><span>${product.category} / MOQ ${product.moq}</span><span>★ ${product.rating}</span></div>
     <h3><a href="/html/public/product-detail.html?id=${product.id}">${product.name}</a></h3>
-    <div class="product-row"><strong>${money(product.price)}</strong><button class="text-button" data-add="${product.id}">Add to bag</button></div>
+    <div class="product-row"><strong>${money(product.price)} <small>/ unit</small></strong><button class="text-button" data-add="${product.id}" ${product.stock ? "" : "disabled"}>Add to bag</button></div>
   </article>`;
 }
 
@@ -148,16 +166,21 @@ function renderShop() {
   const apply = () => {
     const term = search.value.toLowerCase().trim();
     const selected = category.value;
+    const inStock = document.getElementById("stock-filter")?.checked;
+    const minimumOrder = Number(document.getElementById("moq-filter")?.value || 0);
     renderProducts(
       products.filter(
         (product) =>
           (!term || product.name.toLowerCase().includes(term)) &&
-          (!selected || product.category === selected),
+          (!selected || product.category === selected) &&
+          (!inStock || product.stock > 0) && product.moq >= minimumOrder,
       ),
     );
   };
   search.addEventListener("input", apply);
   category.addEventListener("change", apply);
+  document.getElementById("moq-filter")?.addEventListener("change", apply);
+  document.getElementById("stock-filter")?.addEventListener("change", apply);
   renderProducts();
 }
 
@@ -179,10 +202,8 @@ function renderCart() {
         )
         .join("")
     : `<div class="empty-state"><h2>Your bag is quiet.</h2><p>Find something useful, beautiful, or both.</p><a class="button" href="/html/public/shop.html">Continue shopping</a></div>`;
-  document.getElementById("cart-subtotal").textContent = money(subtotal);
-  document
-    .getElementById("checkout-link")
-    .classList.toggle("disabled", !items.length);
+  document.getElementById("cart-subtotal")?.replaceChildren(document.createTextNode(money(subtotal)));
+  document.getElementById("checkout-link")?.classList.toggle("disabled", !items.length);
 }
 
 function renderDetail() {
@@ -250,11 +271,11 @@ document.addEventListener("click", (event) => {
   const remove = event.target.closest("[data-remove]");
   if (remove) removeFromCart(remove.dataset.remove);
   const qty = event.target.closest("[data-qty]");
-  if (qty)
+  const cartItem = qty && getCart().find((item) => item.id === qty.dataset.qty);
+  if (cartItem)
     changeQuantity(
       qty.dataset.qty,
-      getCart().find((item) => item.id === qty.dataset.qty).quantity +
-        Number(qty.dataset.change),
+      cartItem.quantity + Number(qty.dataset.change),
     );
 });
 

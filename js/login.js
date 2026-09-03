@@ -16,7 +16,6 @@ document
       isPassword ? "Hide password" : "Show password",
     );
   });
-
 document.getElementById("formSignin").addEventListener("submit", (e) => {
   e.preventDefault();
 
