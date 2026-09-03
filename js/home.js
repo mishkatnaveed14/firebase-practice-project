@@ -10,7 +10,7 @@ button.addEventListener("click",(e)=>{
 })
 let btb3 = document.getElementById("btnc").addEventListener("click",(e)=>{
     e.preventDefault()
-      window.location.pathname = "../html/admin.html"
+    window.location.pathname = "/html/admin/admin-dashboard.html";
 })
   
   

@@ -1,4 +1,6 @@
-import { getalldata, logout } from "../firebase.config.js";
+import { getalldata, logout, togetloggedinuser } from "../firebase.config.js";
+togetloggedinuser();
+
 const tableBody = document.getElementById("users-table-body");
 const totalUsers = document.getElementById("total-users");
 const refreshBtn = document.getElementById("refresh-btn");
