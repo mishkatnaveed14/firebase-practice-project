@@ -1,4 +1,4 @@
-import { login, togetloggedinuser } from "../firebase.config.js";
+import { login, resetPassword, togetloggedinuser } from "../firebase.config.js";
 togetloggedinuser();
 // SIGN IN
 const emailSignin = document.getElementById("signin-email");
@@ -21,4 +21,20 @@ document.getElementById("formSignin").addEventListener("submit", (e) => {
   e.preventDefault();
 
   login(emailSignin.value, passwordSignin.value);
+});
+
+document.querySelector(".forgot-link").addEventListener("click", async (event) => {
+  event.preventDefault();
+  const email = emailSignin.value.trim();
+  if (!email) {
+    alert("Enter your email address first.");
+    emailSignin.focus();
+    return;
+  }
+  try {
+    await resetPassword(email);
+    alert("Password reset email sent. Check your inbox.");
+  } catch (error) {
+    alert(error.message);
+  }
 });

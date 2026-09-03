@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,38 @@
     <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="/css/admin/admin.css" />
 </head>
-<body class="storefront"><nav class="site-nav"><a class="brand" href="/html/admin/admin-dashboard.html">Morrow<span>.</span> Admin</a><div class="nav-links"><a href="/html/admin/admin-dashboard.html">Dashboard</a><a href="/html/admin/admin-products.html">Products</a><a href="/html/admin/admin-orders.html">Orders</a><a class="active" href="/html/admin/admin-users.html">Users</a></div></nav><main class="page-shell"><div class="page-intro compact"><span class="eyebrow">Workspace directory</span><h1>Users.</h1><p>Manage the people and permissions connected to your workspace.</p></div><section class="table-section"><div class="table-container"><table><thead><tr><th>#</th><th>Username</th><th>Email</th><th>UID</th><th colspan="3">Actions</th></tr></thead><tbody id="users-table-body"></tbody></table></div></section></main><script type="module" src="/js/admin.js"></script><script type="module" src="/js/page-guard.js"></script><script type="module" src="/js/site-footer.js"></script>
+
+<body class="storefront">
+    <nav class="site-nav"><a class="brand" href="/html/admin/admin-dashboard.html">Morrow<span>.</span> Admin</a>
+        <div class="nav-links"><a href="/html/admin/admin-dashboard.html">Dashboard</a><a
+                href="/html/admin/admin-products.html">Products</a><a href="/html/admin/admin-orders.html">Orders</a><a
+                class="active" href="/html/admin/admin-users.html">Users</a></div>
+    </nav>
+    <main class="page-shell">
+        <div class="page-intro compact"><span class="eyebrow">Workspace directory</span>
+            <h1>Users.</h1>
+            <p>Manage the people and permissions connected to your workspace.</p>
+        </div>
+        <section class="table-section">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>UID</th>
+                            <th colspan="3">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-table-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="/js/admin.js"></script>
+    <script type="module" src="/js/page-guard.js"></script>
+    <script type="module" src="/js/site-footer.js"></script>
 </body>
+
 </html>

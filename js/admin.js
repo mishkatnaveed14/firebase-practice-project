@@ -29,7 +29,7 @@ function renderUsers(users) {
     `;
     tableBody.appendChild(row);
   });
-  totalUsers.textContent = users.length;
+  if (totalUsers) totalUsers.textContent = users.length;
 }
 
 async function showUsers() {
@@ -40,7 +40,7 @@ async function showUsers() {
 }
 
 function filterUsers() {
-  const searchTerm = userSearch.value.trim().toLowerCase();
+  const searchTerm = userSearch ? userSearch.value.trim().toLowerCase() : "";
   const filteredUsers = allUsers.filter((user) =>
     (user.username || "").toLowerCase().includes(searchTerm),
   );
@@ -48,12 +48,12 @@ function filterUsers() {
 }
 
 showUsers();
-document.getElementById("logout-btn").addEventListener("click", (e) => {
+document.getElementById("logout-btn")?.addEventListener("click", (e) => {
   e.preventDefault();
   logout();
 });
-refreshBtn.addEventListener("click", showUsers);
-userSearch.addEventListener("input", filterUsers);
+refreshBtn?.addEventListener("click", showUsers);
+userSearch?.addEventListener("input", filterUsers);
 
 tableBody.addEventListener("click", async (event) => {
   const button = event.target.closest("button[data-action]");

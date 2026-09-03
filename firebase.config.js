@@ -3,6 +3,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  sendPasswordResetEmail,
   onAuthStateChanged,
   signOut,
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
@@ -82,6 +83,10 @@ function login(email, password) {
     .catch((error) => {
       console.log(error.code, error.message, "===> error while logging in");
     });
+}
+
+async function resetPassword(email) {
+  await sendPasswordResetEmail(auth, email);
 }
 
 // role base page routing
@@ -197,6 +202,7 @@ async function unblockUser(uniqueid) {
 export {
   signup,
   login,
+  resetPassword,
   getsingleuserdata,
   getalldata,
   togetloggedinuser,
