@@ -306,3 +306,5 @@ if (document.getElementById("cart-items")) renderCart();
 if (document.getElementById("detail-content")) renderDetail();
 if (document.getElementById("checkout-form")) renderCheckout();
 if (document.getElementById("order-list")) renderOrders();
+
+export { products, getOrders };

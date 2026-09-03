@@ -44,6 +44,22 @@
 
     <section class="stats">
       <div class="stat-card">
+        <p>Monthly Revenue</p>
+        <h2 id="monthly-revenue">$0.00</h2>
+      </div>
+      <div class="stat-card">
+        <p>B2B Accounts</p>
+        <h2 id="total-accounts">0</h2>
+      </div>
+      <div class="stat-card">
+        <p>Pending Orders</p>
+        <h2 id="pending-orders">0</h2>
+      </div>
+      <div class="stat-card">
+        <p>Low Stock Alerts</p>
+        <h2 id="low-stock">0</h2>
+      </div>
+      <div class="stat-card legacy-stat">
         <div>
           <p>Total Users</p>
 
@@ -66,6 +82,11 @@
           <h2 id="new-users">0</h2>
         </div>
       </div>
+    </section>
+
+    <section class="table-section overview-section">
+      <div class="table-header"><div><h2>Recent order activity</h2><p>Latest customer procurement activity</p></div><a class="refresh-btn" href="/html/admin/admin-orders.html">View all orders</a></div>
+      <div class="table-container"><table><thead><tr><th>Order</th><th>Items</th><th>Total</th><th>Status</th></tr></thead><tbody id="order-overview"></tbody></table></div>
     </section>
 
     <section class="table-section">
