@@ -9,160 +9,136 @@
 </head>
 
 <body class="auth-page">
-    <div class="auth-shell"><a class="brand auth-brand" href="/index.html">Morrow<span>.</span></a><div class="auth-side"><span class="eyebrow">Built for teams</span><h1>Make buying<br><em>feel simple.</em></h1><p>Bring requests, products, and repeat orders into one quiet system.</p><div class="side-stat"><strong>2,400+</strong><span>teams already ordering with confidence</span></div></div>
-    <div class="auth-modal">
+    <div class="auth-shell"><a class="brand auth-brand" href="/index.html">Morrow<span>.</span></a>
+        <div class="auth-side"><span class="eyebrow">Built for teams</span>
+            <h1>Make buying<br><em>feel simple.</em></h1>
+            <p>Bring requests, products, and repeat orders into one quiet system.</p>
+            <div class="side-stat"><strong>2,400+</strong><span>teams already ordering with confidence</span></div>
+        </div>
+        <div class="auth-modal">
 
-        <!-- Header -->
-        <div class="modal-header">
+            <!-- Header -->
+            <div class="modal-header">
 
-            <span class="eyebrow">Start your workspace</span><h2 id="modalTitle">Create account.</h2>
+                <span class="eyebrow">Start your workspace</span>
+                <h2 id="modalTitle">Create account.</h2>
 
-            <p id="modalSubtitle">
-                Set up your team's access in under a minute.
+                <p id="modalSubtitle">
+                    Set up your team's access in under a minute.
+                </p>
+
+            </div>
+
+
+            <!-- Social Login -->
+
+            <div class="social-buttons">
+
+                <button class="btn-social" type="button" aria-label="Google">
+
+                    <!-- existing Google SVG -->
+
+                </button>
+
+
+                <button class="btn-social" type="button" aria-label="GitHub">
+
+                    <!-- existing GitHub SVG -->
+
+                </button>
+
+
+                <button class="btn-social" type="button" aria-label="Facebook">
+
+                    <!-- existing Facebook SVG -->
+
+                </button>
+
+            </div>
+
+
+            <div class="divider">
+                <span>or continue with email</span>
+            </div>
+
+
+            <!-- SIGN UP FORM -->
+
+            <form class="form-content active" id="formSignup">
+
+
+                <div class="form-group">
+
+                    <label for="signup-name">
+                        Full Name
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <input type="text" id="signup-name" placeholder="John Doe" required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="signup-email">
+                        Email Address
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <input type="email" id="signup-email" placeholder="name@company.com" required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="signup-password">
+                        Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <input type="password" id="signup-password" class="password-input" placeholder="••••••••"
+                            required>
+
+                        <button type="button" class="toggle-password">
+
+                            👁️
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <button type="submit" class="btn-submit" id="signup-btn">
+
+                    Create Account
+
+                </button>
+
+            </form>
+
+
+            <!-- LOGIN PAGE LINK -->
+
+            <p>
+                Already have an account?
+                <a href="./login.html">
+                    Sign In
+                </a>
             </p>
 
         </div>
-
-
-        <!-- Social Login -->
-
-        <div class="social-buttons">
-
-            <button
-                class="btn-social"
-                type="button"
-                aria-label="Google">
-
-                <!-- existing Google SVG -->
-
-            </button>
-
-
-            <button
-                class="btn-social"
-                type="button"
-                aria-label="GitHub">
-
-                <!-- existing GitHub SVG -->
-
-            </button>
-
-
-            <button
-                class="btn-social"
-                type="button"
-                aria-label="Facebook">
-
-                <!-- existing Facebook SVG -->
-
-            </button>
-
-        </div>
-
-
-        <div class="divider">
-            <span>or continue with email</span>
-        </div>
-
-
-        <!-- SIGN UP FORM -->
-
-        <form
-            class="form-content active"
-            id="formSignup">
-
-
-            <div class="form-group">
-
-                <label for="signup-name">
-                    Full Name
-                </label>
-
-                <div class="input-wrapper">
-
-                    <input
-                        type="text"
-                        id="signup-name"
-                        placeholder="John Doe"
-                        required
-                    >
-
-                </div>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="signup-email">
-                    Email Address
-                </label>
-
-                <div class="input-wrapper">
-
-                    <input
-                        type="email"
-                        id="signup-email"
-                        placeholder="name@company.com"
-                        required
-                    >
-
-                </div>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="signup-password">
-                    Password
-                </label>
-
-                <div class="input-wrapper">
-
-                    <input
-                        type="password"
-                        id="signup-password"
-                        class="password-input"
-                        placeholder="••••••••"
-                        required
-                    >
-
-                    <button
-                        type="button"
-                        class="toggle-password">
-
-                        👁️
-
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <button
-                type="submit"
-                class="btn-submit"
-                id="signup-btn">
-
-                Create Account
-
-            </button>
-
-        </form>
-
-
-        <!-- LOGIN PAGE LINK -->
-
-        <p>
-            Already have an account?
-            <a href="./login.html">
-                Sign In
-            </a>
-        </p>
-
-    </div></div>
+    </div>
 
 
     <script type="module" src="/js/index.js"></script>
