@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <h1>Checkout</h1>
-    <p>Complete your purchase below.</p>
-    <script type="module" src="/js/page-guard.js"></script>
+<body class="storefront"><nav class="site-nav"><a class="brand" href="/html/public/home.html">Morrow<span>.</span></a><a class="quiet-link" href="/html/user/cart.html">← Back to bag</a></nav><main class="page-shell"><div class="page-intro compact"><span class="eyebrow">Almost yours</span><h1>Checkout.</h1></div><div class="checkout-layout"><form id="checkout-form" class="checkout-form"><h2>Delivery details</h2><label>Full name<input required type="text" placeholder="Your name"></label><label>Email<input required type="email" placeholder="you@example.com"></label><label>Address<input required type="text" placeholder="Street and city"></label><label>Card number<input required minlength="12" type="text" placeholder="4242 4242 4242 4242"></label><button class="button" type="submit">Place order <span>↗</span></button></form><aside class="summary"><span>Your order</span><div id="checkout-items" class="summary-items"></div><div><span>Total</span><strong id="checkout-total">$0.00</strong></div></aside></div></main><script type="module" src="/js/store.js"></script><script type="module" src="/js/page-guard.js"></script>
 </body>
 </html>

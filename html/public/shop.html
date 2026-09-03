@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <h1>Shop</h1>
-    <p>Welcome to our shop!</p>
-    <script type="module" src="/js/page-guard.js"></script>
+<body class="storefront">
+    <nav class="site-nav"><a class="brand" href="/html/public/home.html">Morrow<span>.</span></a><div class="nav-links"><a class="active" href="/html/public/shop.html">Shop</a><a href="/html/public/about.html">About</a><a href="/html/user/user-orders.html">Orders</a><a class="bag-link" href="/html/user/cart.html">Bag <span data-cart-count>0</span></a></div></nav>
+    <main class="page-shell"><div class="page-intro"><span class="eyebrow">The collection</span><h1>Find your next favorite.</h1><p>Thoughtful pieces for daily rituals, rooms, and movement.</p></div><div class="shop-tools"><input id="shop-search" type="search" placeholder="Search the collection"><select id="category-filter"><option value="">All categories</option><option>Apparel</option><option>Accessories</option><option>Footwear</option><option>Home</option></select></div><div id="product-grid" class="product-grid"></div></main><div id="toast" class="toast"></div><script type="module" src="/js/store.js"></script>
 </body>
 </html>
