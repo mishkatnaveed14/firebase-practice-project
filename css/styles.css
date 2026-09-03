@@ -525,7 +525,10 @@ body {
     font: inherit;
     font-size: 13px;
 }
-.admin-link { color: #e36b46; }
+
+.admin-link {
+    color: #e36b46;
+}
 
 .hero,
 .page-shell {
