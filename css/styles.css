@@ -781,9 +781,9 @@ body {
     margin-top: 20px;
 }
 
-        animation: none;
-    display: inline-block;
-    margin-top: 35px;
+animation: none;
+display: inline-block;
+margin-top: 35px;
 }
 
 .cart-layout,
@@ -869,6 +869,10 @@ body {
 .summary .disabled {
     pointer-events: none;
     opacity: .45;
+}
+
+.summary .disabled {
+    cursor: not-allowed;
 }
 
 .empty-state {
