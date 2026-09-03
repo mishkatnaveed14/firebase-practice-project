@@ -440,6 +440,14 @@ td:nth-child(4) {
     padding: 35px 30px 22px;
 }
 
+.admin-footer {
+    border-top: 1px solid rgba(255, 255, 255, .08);
+}
+
+.admin-footer .footer-inner {
+    max-width: 1500px;
+}
+
 .site-footer .brand {
     color: #fff;
 }
