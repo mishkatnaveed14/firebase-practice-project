@@ -1,6 +1,5 @@
-
 import { login, togetloggedinuser } from "../firebase.config.js";
-togetloggedinuser()
+togetloggedinuser();
 // SIGN IN
 const emailSignin = document.getElementById("signin-email");
 const passwordSignin = document.getElementById("signin-password");

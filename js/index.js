@@ -1,7 +1,4 @@
-import {
-  signup,
-  togetloggedinuser,
-} from "../firebase.config.js";
+import { signup, togetloggedinuser } from "../firebase.config.js";
 togetloggedinuser();
 
 const emailSignup = document.getElementById("signup-email");
