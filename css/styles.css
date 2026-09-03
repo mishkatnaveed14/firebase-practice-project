@@ -1465,6 +1465,81 @@ body {
     min-height: 18px;
 }
 
+.detail-thumbs {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.detail-thumbs img {
+    width: 75px;
+    height: 85px;
+    object-fit: cover;
+    opacity: .65;
+}
+
+.detail-price small {
+    color: #89918b;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.bulk-table {
+    border-top: 1px solid #d5d9d1;
+    margin-top: 25px;
+}
+
+.bulk-table div,
+.stock-line,
+.specs-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid #d5d9d1;
+    color: #69746d;
+    font-size: 12px;
+}
+
+.bulk-table strong {
+    color: #1e2521;
+}
+
+.stock-line {
+    align-items: center;
+    border-bottom: 0;
+}
+
+.stock-line .stock-badge {
+    position: static;
+}
+
+.specs-panel {
+    grid-column: 1 / -1;
+    margin-top: 25px;
+    padding: 35px;
+    background: #e6e9df;
+}
+
+.specs-panel h2 {
+    margin: 12px 0 20px;
+    font: 30px Georgia, serif;
+}
+
+.specs-grid {
+    border-top: 1px solid #d5d9d1;
+    border-bottom: 0;
+}
+
+.specs-grid span {
+    display: grid;
+    gap: 8px;
+}
+
+.specs-grid strong {
+    color: #1e2521;
+}
+
 .trust-strip {
     max-width: 1180px;
     margin: 0 auto;
