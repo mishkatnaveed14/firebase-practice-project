@@ -8,7 +8,7 @@ const emailSignup = document.getElementById("signup-email");
 const passwordSignup = document.getElementById("signup-password");
 const username = document.getElementById("signup-name");
 
-document.getElementById("signup-btn").addEventListener("click", (e) => {
+document.getElementById("formSignup").addEventListener("submit", (e) => {
   e.preventDefault();
   signup(emailSignup.value, passwordSignup.value, username.value);
 });

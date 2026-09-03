@@ -5,7 +5,7 @@ togetloggedinuser()
 const emailSignin = document.getElementById("signin-email");
 const passwordSignin = document.getElementById("signin-password");
 
-document.getElementById("signin-btn").addEventListener("click", (e) => {
+document.getElementById("formSignin").addEventListener("submit", (e) => {
   e.preventDefault();
 
   login(emailSignin.value, passwordSignin.value);
