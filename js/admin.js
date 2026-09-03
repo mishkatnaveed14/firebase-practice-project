@@ -15,6 +15,9 @@ async function showUsers() {
       <td>${user.username || "Nothing"}</td>
       <td>${user.email || "nothing"}</td>
       <td>${user.id}</td>
+      <td><button class="btn btn-danger" onclick="deleteUser('${user.id}')">Delete</button></td>
+      <td><button class="btn btn-primary" onclick="blockUser('${user.id}')">Block</button></td>
+      <td><button class="btn btn-primary" onclick="unblockUser('${user.id}')">Unblock</button></td>
     `;
     tableBody.appendChild(row);
   });
