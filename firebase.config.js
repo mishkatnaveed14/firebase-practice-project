@@ -12,6 +12,8 @@ import {
   doc,
   setDoc,
   getDoc,
+  updateDoc,
+  deleteDoc,
   collection,
   query,
   getDocs,
@@ -175,7 +177,22 @@ async function getalldata() {
     console.log(error.code, error.message, "error while getting all users");
   }
 }
+
+async function deleteUser(uniqueid) {
+  await deleteDoc(doc(db, "users", uniqueid));
+}
+
+async function blockUser(uniqueid) {
+  await updateDoc(doc(db, "users", uniqueid), { status: "Blocked" });
+  alert("User has been blocked successfully.");
+}
+
+async function unblockUser(uniqueid) {
+  await updateDoc(doc(db, "users", uniqueid), { status: "Active" });
+  alert("User has been unblocked successfully.");
+}
 //
+
 
 export {
   signup,
@@ -184,4 +201,8 @@ export {
   getalldata,
   togetloggedinuser,
   logout,
+
+  deleteUser,
+  blockUser,
+  unblockUser,
 };

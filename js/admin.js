@@ -1,4 +1,11 @@
-import { getalldata, logout, togetloggedinuser } from "../firebase.config.js";
+import {
+  getalldata,
+  logout,
+  togetloggedinuser,
+  deleteUser,
+  blockUser,
+  unblockUser,
+} from "../firebase.config.js";
 togetloggedinuser();
 
 const tableBody = document.getElementById("users-table-body");
@@ -7,6 +14,7 @@ const refreshBtn = document.getElementById("refresh-btn");
 
 async function showUsers() {
   const users = await getalldata();
+  if (!users) return;
   tableBody.innerHTML = "";
   users.forEach((user, index) => {
     const row = document.createElement("tr");
@@ -15,9 +23,9 @@ async function showUsers() {
       <td>${user.username || "Nothing"}</td>
       <td>${user.email || "nothing"}</td>
       <td>${user.id}</td>
-      <td><button class="btn btn-danger" onclick="deleteUser('${user.id}')">Delete</button></td>
-      <td><button class="btn btn-primary" onclick="blockUser('${user.id}')">Block</button></td>
-      <td><button class="btn btn-primary" onclick="unblockUser('${user.id}')">Unblock</button></td>
+      <td><button class="btn btn-danger delete" data-action="delete" data-user-id="${user.id}">Delete</button></td>
+      <td><button class="btn btn-primary block" data-action="block" data-user-id="${user.id}">Block</button></td>
+      <td><button class="btn btn-primary unblock" data-action="unblock" data-user-id="${user.id}">Unblock</button></td>
     `;
     tableBody.appendChild(row);
   });
@@ -29,3 +37,26 @@ document.getElementById("logout-btn").addEventListener("click", (e) => {
   logout();
 });
 refreshBtn.addEventListener("click", showUsers);
+
+tableBody.addEventListener("click", async (event) => {
+  const button = event.target.closest("button[data-action]");
+  if (!button) return;
+
+  const userId = button.dataset.userId;
+  const action = button.dataset.action;
+
+  try {
+    if (action === "delete") {
+      if (!confirm("Delete this user profile?")) return;
+      await deleteUser(userId);
+    } else if (action === "block") {
+      await blockUser(userId);
+    } else if (action === "unblock") {
+      await unblockUser(userId);
+    }
+    await showUsers();
+  } catch (error) {
+    console.error(`Unable to ${action} user`, error);
+    alert("Action failed. Check Firestore rules and try again.");
+  }
+});
